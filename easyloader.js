@@ -18,7 +18,7 @@ new (function() {
     ext.loadExtension = function(name) {
     	if(name == 'ALL') {
     		ScratchExtensions.loadExternalJS('https://megjlow.github.io/extension2.js?name=SUN');
-    		ScratchExtensions.loadExternalJS('https://megjlowgithub.io/extension2.js?name=CLOUD');
+    		ScratchExtensions.loadExternalJS('https://megjlow.github.io/extension2.js?name=CLOUD');
     		ScratchExtensions.loadExternalJS('https://megjlow.github.io/extension2.js?name=MOON');
     		ScratchExtensions.loadExternalJS('https://megjlow.github.io/extension2.js?name=CASTLE');
     		ScratchExtensions.loadExternalJS('https://megjlow.github.io/extension2.js?name=TREE');
