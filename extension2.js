@@ -108,7 +108,8 @@ new (function() {
 			type: 'POST', 
 			url: url,
 			success: function(response) {
-			}
+			},
+			timout: 1500
 		});
 	};
 	
