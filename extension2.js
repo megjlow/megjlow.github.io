@@ -46,6 +46,9 @@ new (function() {
 	      success: function() {
 	        ext.isReady = true;
 	      },
+	      error: function() {
+	      	ext.isReady = false;
+	      }
 	      timeout: 350
 	    });
   }
