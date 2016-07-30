@@ -54,7 +54,7 @@ new (function() {
   }
   
   ext.internalStatus();
-  setInterval(ext.internalStatus, 15000);
+  setInterval(ext.internalStatus, 25000);
   
   ext._getStatus = function() {
   	if(ext.isReady) {
