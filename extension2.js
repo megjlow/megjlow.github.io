@@ -1,5 +1,6 @@
 new (function() {
 	var ext = this;
+	ext.statusCount = 0;
  
  	var getUrlParameter = function getUrlParameter(sParam) {
 	    var sPageURL = decodeURIComponent(document.currentScript.src.split("?")[1]),
@@ -37,16 +38,22 @@ new (function() {
 
   ext._shutdown = function() {};
   ext._getStatus = function() {
-    $.ajax({
-      type: "GET",
-      async: false,
-      url: "http://" + ext.name + "/ping",
-      timeout: 350,
-      success: function() {
-        return {status: 2, msg: 'Device connected'}
-      }
-    });
-    return {status: 1, msg: ext.name + " not ready"};
+    if(ext.statusCount >= 15) {
+    	ext.statusCount = 0;
+	    $.ajax({
+	      type: "GET",
+	      async: false,
+	      url: "http://" + ext.name + "/ping",
+	      timeout: 350,
+	      success: function() {
+	        return {status: 2, msg: 'Device connected'}
+	      }
+	    });
+	    return {status: 1, msg: ext.name + " not ready"};
+    }
+    else {
+    	return {status: 2, msg: 'Device connected'}
+    }
   };
 
   ext.getPwm = function(pin) {
