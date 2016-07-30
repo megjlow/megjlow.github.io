@@ -52,6 +52,7 @@ new (function() {
 	    return {status: 1, msg: ext.name + " not ready"};
     }
     else {
+    	ext.statusCount++;
     	return {status: 2, msg: 'Device connected'}
     }
   };
