@@ -50,7 +50,7 @@ new (function() {
 	    });
   }
   
-  setInterval(internalStatus, 10000);
+  setInterval(ext.internalStatus, 10000);
   
   ext._getStatus = function() {
   	if(ext.isReady) {
