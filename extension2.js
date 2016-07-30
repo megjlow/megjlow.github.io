@@ -49,8 +49,8 @@ new (function() {
 	      error: function() {
 	      	ext.isReady = false;
 	      },
-	      timeout: 350
-	    });
+	      timeout: 500
+	});
   }
   
   setInterval(ext.internalStatus, 10000);
