@@ -48,7 +48,7 @@ new (function() {
 	      },
 	      error: function() {
 	      	ext.isReady = false;
-	      }
+	      },
 	      timeout: 350
 	    });
   }
