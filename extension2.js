@@ -45,7 +45,7 @@ new (function() {
         return {status: 2, msg: 'Device connected'}
       }
     });
-    return {status: 1, msg: ext.name + " not ready");
+    return {status: 1, msg: ext.name + " not ready"};
   };
 
   ext.getPwm = function(pin) {
