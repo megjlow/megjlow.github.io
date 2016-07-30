@@ -1,6 +1,6 @@
 new (function() {
 	var ext = this;
-	ext.statusCount = 0;
+	ext.statusCount = 11;
  
  	var getUrlParameter = function getUrlParameter(sParam) {
 	    var sPageURL = decodeURIComponent(document.currentScript.src.split("?")[1]),
