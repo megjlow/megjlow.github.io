@@ -57,12 +57,15 @@ new (function() {
   setInterval(ext.internalStatus, 25000);
   
   ext._getStatus = function() {
+  	/*
   	if(ext.isReady) {
   		return {status: 2, msg: 'Device connected'}
   	}
   	else {
   		return {status: 1, msg: ext.name + " not ready"};
   	}
+  	*/
+  	return {status: 2, msg: 'Device connected'}
   };
 
   ext.getPwm = function(pin) {
