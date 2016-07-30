@@ -44,10 +44,10 @@ new (function() {
 	      type: "GET",
 	      async: false,
 	      url: "http://" + ext.name + "/ping",
-	      timeout: 350,
 	      success: function() {
 	        return {status: 2, msg: 'Device connected'}
-	      }
+	      },
+	      timeout: 350
 	    });
 	    return {status: 1, msg: ext.name + " not ready"};
     }
