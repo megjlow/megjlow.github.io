@@ -53,8 +53,8 @@ new (function() {
 	});
   }
   
-  ext.internalStatus();
-  setInterval(ext.internalStatus, 25000);
+  //ext.internalStatus();
+  //setInterval(ext.internalStatus, 25000);
   
   ext._getStatus = function() {
   	/*
