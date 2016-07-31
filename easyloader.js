@@ -6,7 +6,7 @@ new (function() {
 			[' ', 'Load extension %m.name', 'loadExtension', '']
 		],
 		'menus': {
-      'name': ['SUN', 'CLOUD', 'MOON', 'CASTLE', 'TREE', 'DESERT', 'FISH', 'CAT', 'LADYBIRD', 'ALL']
+	'name': ['CASTLE', 'CAT', 'CLOUD', 'DESERT', 'FISH', 'LADYBIRD', 'MOON', 'SUN', 'TREE', 'ALL']
     },
     url: 'http://www.warwick.ac.uk/tilesfortales'
 	};
