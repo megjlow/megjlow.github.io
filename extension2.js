@@ -1,3 +1,16 @@
+/*
+Requires parameters so load https://megjlow.github.io/extensionloader.js and use that block to load this one.
+
+Parameters are:
+name - 	If you have a router set up which will assign the same IP address to a tile every time and will do DNS then the tile can be addressed
+		by name e.g. http://SUN/XXX will work if SUN resolves to the IP address of a tile e.g. https://megjlow.github.io/extension2.js?name=SUN
+ip -	If you don't have a router set up to assign the same IP address to a tile every time or you don't have DNS which will resolve the tile
+		name then use the IP parameter e.g. https://megjlow.github.io/extension2.js?ip=10.0.0.1 will load the tile extension which communicates
+		with a tile at the IP address 10.0.0.1
+		
+If both name and ip are supplied then name will be used before ip.
+*/
+
 new (function() {
 	var ext = this;
 	ext.isReady = false;
@@ -84,18 +97,7 @@ new (function() {
 	});
   }
   
-  //ext.internalStatus();
-  //setInterval(ext.internalStatus, 25000);
-  
   ext._getStatus = function() {
-  	/*
-  	if(ext.isReady) {
-  		return {status: 2, msg: 'Device connected'}
-  	}
-  	else {
-  		return {status: 1, msg: ext.name + " not ready"};
-  	}
-  	*/
   	return {status: 2, msg: 'Device connected'}
   };
 
