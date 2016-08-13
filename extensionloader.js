@@ -3,7 +3,7 @@ new (function() {
 	
 	var descriptor = {
     	blocks: [
-      		[' ', 'Load extension block %s', 'loadBlock, 'block', 'url'],
+      		[' ', 'Load extension block %s', 'loadBlock', 'block', 'url'],
     	],
     	url: 'http://www.warwick.ac.uk/tilesfortales'
   	};
