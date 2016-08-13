@@ -18,8 +18,19 @@ new (function() {
 	};
 
 	ext.name = getUrlParameter('name');
+	ext.ip = getUrlParameter('ip);
+	
+	if(ext.name != undefined) {
+		// we'll use the name supplied by preference
+		ext.url = "http://" + ext.name;
+	}
+	else {
+		// no name supplied so use the IP address
+		ext.url = "http://" + ext.IP;
+	}
 	
 	console.log('name ' + ext.name);
+	console.log('ip ' + ext.ip);
 	
 	var descriptor = {
     blocks: [
@@ -42,7 +53,7 @@ new (function() {
   	$.ajax({
 	      type: "GET",
 	      async: true,
-	      url: "http://" + ext.name + "/ping",
+	      url: ext.url + "/ping",
 	      success: function() {
 	        ext.isReady = true;
 	      },
@@ -75,7 +86,7 @@ new (function() {
     if(pin == 2) {
       p = 5;
     }
-    var url = 'http://' + ext.name + '/gpio' + p + '/' + setting;
+    var url = ext.url + '/gpio' + p + '/' + setting;
     $.ajax({
       type: 'POST',
       url: url,
@@ -103,7 +114,7 @@ new (function() {
 	    else if(pin == 3) {
 	      p = 14;
 	    }
-	    var url = 'http://' + ext.name + '/gpio' + p + '/' + s; 
+	    var url = ext.url + '/gpio' + p + '/' + s; 
 		$.ajax({
 			type: 'POST', 
 			url: url,
@@ -113,6 +124,11 @@ new (function() {
 		});
 	};
 	
-	ScratchExtensions.register(ext.name, descriptor, ext);
+	if(ext.name != undefined) {
+		ScratchExtensions.register(ext.name, descriptor, ext);
+	}
+	else {
+		ScratchExtensions.register("tile", descriptor, ext);
+	}
 
 })();
