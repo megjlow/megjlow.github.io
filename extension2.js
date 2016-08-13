@@ -9,6 +9,9 @@ ip -	If you don't have a router set up to assign the same IP address to a tile e
 		with a tile at the IP address 10.0.0.1
 		
 If both name and ip are supplied then name will be used before ip.
+
+Digital pins 1, 2 and 3 map to the Feather Huzzah pins 12, 13 and 14
+Pwm pins 1 and 2 map to the Feather Huzza pins 4 and 5
 */
 
 new (function() {
