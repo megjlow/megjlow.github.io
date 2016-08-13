@@ -28,7 +28,7 @@ new (function() {
 	else {
 		// no name supplied so use the IP address
 		ext.url = "http://" + ext.IP;
-		console.log('didn't get name');
+		console.log("didn't get name");
 	}
 	
 	console.log('name ' + ext.name);
