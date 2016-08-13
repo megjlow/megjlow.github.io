@@ -20,13 +20,15 @@ new (function() {
 	ext.name = getUrlParameter('name');
 	ext.ip = getUrlParameter('ip');
 	
-	if(ext.name != 'undefined') {
+	if(ext.name != undefined) {
 		// we'll use the name supplied by preference
 		ext.url = "http://" + ext.name;
+		console.log('got name');
 	}
 	else {
 		// no name supplied so use the IP address
 		ext.url = "http://" + ext.IP;
+		console.log('didn't get name');
 	}
 	
 	console.log('name ' + ext.name);
@@ -48,7 +50,7 @@ new (function() {
     	url: 'http://www.warwick.ac.uk/tilesfortales'
   	};
   	
-  	if(ext.name == 'undefine') {
+  	if(ext.name == undefined) {
   		var descriptor = {
 	    	blocks: [
 	      		[' ', ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
