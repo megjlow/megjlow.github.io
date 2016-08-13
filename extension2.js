@@ -20,7 +20,7 @@ new (function() {
 	ext.name = getUrlParameter('name');
 	ext.ip = getUrlParameter('ip');
 	
-	if(ext.name != undefined) {
+	if(ext.name != 'undefined') {
 		// we'll use the name supplied by preference
 		ext.url = "http://" + ext.name;
 	}
