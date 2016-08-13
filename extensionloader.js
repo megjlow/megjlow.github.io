@@ -3,7 +3,7 @@ new (function() {
 	
 	var descriptor = {
     	blocks: [
-      		[' ', 'Load extension block %s', 'block', 'url'],
+      		[' ', 'Load extension block %s', 'loadBlock, 'block', 'url'],
     	],
     	url: 'http://www.warwick.ac.uk/tilesfortales'
   	};
@@ -12,6 +12,10 @@ new (function() {
   	
   	ext._getStatus = function() {
   		return {status: 2, msg: 'Device connected'}
+  	};
+  	
+  	ext.loadBlock = function(url) {
+  		ScratchExtensions.loadExternalJS(url);
   	};
   	
   	ScratchExtensions.register("extensionloader", descriptor, ext);
