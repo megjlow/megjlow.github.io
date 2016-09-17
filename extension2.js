@@ -153,7 +153,7 @@ new (function() {
 		ScratchExtensions.register(ext.name, descriptor, ext);
 	}
 	else {
-		ScratchExtensions.register("tile", descriptor, ext);
+		ScratchExtensions.register(ext.ip, descriptor, ext);
 	}
 
 })();
