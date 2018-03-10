@@ -1,6 +1,6 @@
 new (function() {
 	var socket = null;
-	var connectionStatus = {status: 1, msg: ext.name + " not ready"};
+	var connectionStatus = {status: 1, msg: "Extension not ready"};
 	var ext = this;
  
  	var getUrlParameter = function getUrlParameter(sParam) {
