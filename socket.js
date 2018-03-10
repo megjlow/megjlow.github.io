@@ -4,7 +4,7 @@ new (function() {
 	var ext = this;
  
  	var getUrlParameter = function getUrlParameter(sParam) {
-	    var sPageURL = decodeURIComponent(document.currentScript.src.split("?")[1]),
+	    var sPageURL = decodeURIComponent(document.currentScript.src.split("#")[1]),
 	        sURLVariables = sPageURL.split('&'),
 	        sParameterName,
 	        i;
@@ -21,6 +21,9 @@ new (function() {
 	ext.name = getUrlParameter('name');
 	
 	console.log('name ' + ext.name);
+
+	ext.ip = getUrlParameter('ip');
+	console.log('ip ' + ext.ip);
 	
 	var descriptor = {
     blocks: [
