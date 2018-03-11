@@ -124,6 +124,7 @@ new (function() {
   ext.setPwm = function(pin, setting) {
     	ext.websocket = new WebSocket("ws://192.168.2.106");
 	ext.websocket.onopen = function(evt) { ext.onOpen(evt) };
+	ext.websocket.onmessage = function(evt) { ext.onMessage(evt) };
     var p = 4;
     if(pin == 2) {
       p = 5;
