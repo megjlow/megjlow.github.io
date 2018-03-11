@@ -98,13 +98,13 @@ new (function() {
 	});
   }
   
-  ext.doSend(message)
+  ext.doSend = function(message)
   {
     console.log("SENT: " + message);
     ext.websocket.send(message);
   }
   
-  ext.onOpen(evt)
+  ext.onOpen = function(evt)
   {
     console.log("Connected");
     ext.doSend("WebSocket rocks");
