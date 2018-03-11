@@ -71,7 +71,7 @@ new (function() {
 			[' ', ext.ip + ': connect', 'connect'],
 			['r', ext.ip + ': isConnected', 'isConnected'],
 			[' ', ext.ip + ': disconnect', 'disconnect'],
-			['h', ext.ip + ': isConnected', 'isConnected'],
+			['b', ext.ip + ': isConnected', 'isConnected'],
 	      		[' ', ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 	      		[' ', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
