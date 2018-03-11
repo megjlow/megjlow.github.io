@@ -71,6 +71,7 @@ new (function() {
 			[' ', ext.ip + ': connect', 'connect'],
 			[' ', ext.ip + ': disconnect', 'disconnect'],
 			['b', ext.ip + ': isConnected', 'isConnected'],
+			[' ', ext.ip + ': setPinMode %m.pin', 'setPinMode', 'setPinMode', 0, 'output'],
 	      		[' ', ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 	      		[' ', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
@@ -87,19 +88,9 @@ new (function() {
 
   ext._shutdown = function() {};
   
-  ext.internalStatus = function() {
-  	$.ajax({
-	      type: "GET",
-	      async: true,
-	      url: ext.url + "/ping",
-	      success: function() {
-	        ext.isReady = true;
-	      },
-	      error: function() {
-	      	ext.isReady = false;
-	      },
-	      timeout: 500
-	});
+  ext.setPinMode(pin, mode) {
+    console.log("setPinMode " + pin);
+    console.log("setPinMode " + mode);
   }
   
   ext.isConnected = function() {
