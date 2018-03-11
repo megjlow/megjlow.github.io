@@ -98,6 +98,11 @@ new (function() {
 	});
   }
   
+  ext.onMessage = function(evt)
+  {
+    console.log("Received " + evt.data);
+  }
+  
   ext.doSend = function(message)
   {
     console.log("SENT: " + message);
