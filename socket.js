@@ -98,16 +98,16 @@ new (function() {
 	});
   }
   
-  function doSend(message)
+  function ext.doSend(message)
   {
     console.log("SENT: " + message);
-    websocket.send(message);
+    ext.websocket.send(message);
   }
   
-  function onOpen(evt)
+  function ext.onOpen(evt)
   {
     console.log("Connected");
-    doSend("WebSocket rocks");
+    ext.doSend("WebSocket rocks");
   }
   
   ext._getStatus = function() {
@@ -117,8 +117,8 @@ new (function() {
   ext.getPwm = function(pin) {
   };
   ext.setPwm = function(pin, setting) {
-    	var websocket = new WebSocket("ws://192.168.2.106");
-	websocket.onopen = function(evt) { onOpen(evt) };
+    	ext.websocket = new WebSocket("ws://192.168.2.106");
+	ext.websocket.onopen = function(evt) { ext.onOpen(evt) };
     var p = 4;
     if(pin == 2) {
       p = 5;
