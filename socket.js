@@ -108,7 +108,7 @@ new (function() {
   ext.doSend = function(message)
   {
     console.log("SENT: " + message);
-    ext.websocket.send(message);
+    ext.socket.send(message);
   }
   
   ext.onOpen = function(evt)
