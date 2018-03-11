@@ -69,7 +69,6 @@ new (function() {
   		var descriptor = {
 	    	blocks: [
 			[' ', ext.ip + ': connect', 'connect'],
-			['r', ext.ip + ': isConnected', 'isConnected'],
 			[' ', ext.ip + ': disconnect', 'disconnect'],
 			['b', ext.ip + ': isConnected', 'isConnected'],
 	      		[' ', ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
