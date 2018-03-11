@@ -84,6 +84,8 @@ new (function() {
   ext._shutdown = function() {};
   
   ext.internalStatus = function() {
+	var websocket = new WebSocket(wsUri);
+	websocket.onopen = function(evt) { onOpen(evt) };
   	$.ajax({
 	      type: "GET",
 	      async: true,
@@ -96,6 +98,18 @@ new (function() {
 	      },
 	      timeout: 500
 	});
+  }
+  
+  function doSend(message)
+  {
+    console.log("SENT: " + message);
+    websocket.send(message);
+  }
+  
+  function onOpen(evt)
+  {
+    console.log("Connected");
+    doSend("WebSocket rocks");
   }
   
   ext._getStatus = function() {
