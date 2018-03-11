@@ -69,6 +69,8 @@ new (function() {
   		var descriptor = {
 	    	blocks: [
 			[' ', ext.ip + ': connect', 'connect'],
+			[' ', ext.ip + ': isConnected', 'isConnected'],
+			[' ', ext.ip + ': disconnect', 'disconnect'],
 	      		[' ', ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 	      		[' ', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
@@ -100,9 +102,22 @@ new (function() {
 	});
   }
   
+  ext.isConnected = function() {
+    var retval = false;
+    if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
+      retval = true;
+    }
+    return retval;
+  }
+  
+  ext.disconnect = function() {
+    ext.socket.close();
+    ext.socket = null;
+  }
+  
   ext.onMessage = function(evt)
   {
-    console.log("Received " + evt.data);
+    console.log("Received: " + evt.data);
   }
   
   ext.doSend = function(message)
@@ -122,6 +137,7 @@ new (function() {
   }
   
   ext._getStatus = function() {
+    console.log("getStatus");
     var retval = {status: 1, msg: 'Not Connected'};
     if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
       retval = {status: 2, msg: 'Device connected'};
