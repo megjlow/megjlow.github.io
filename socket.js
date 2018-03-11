@@ -88,7 +88,7 @@ new (function() {
 
   ext._shutdown = function() {};
   
-  ext.setPinMode(pin, mode) {
+  ext.setPinMode = function(pin, mode) {
     console.log("setPinMode " + pin);
     console.log("setPinMode " + mode);
   }
