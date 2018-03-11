@@ -84,8 +84,6 @@ new (function() {
   ext._shutdown = function() {};
   
   ext.internalStatus = function() {
-	var websocket = new WebSocket(wsUri);
-	websocket.onopen = function(evt) { onOpen(evt) };
   	$.ajax({
 	      type: "GET",
 	      async: true,
@@ -119,7 +117,8 @@ new (function() {
   ext.getPwm = function(pin) {
   };
   ext.setPwm = function(pin, setting) {
-	  ext.internalStatus();
+    	var websocket = new WebSocket(wsUri);
+	websocket.onopen = function(evt) { onOpen(evt) };
     var p = 4;
     if(pin == 2) {
       p = 5;
