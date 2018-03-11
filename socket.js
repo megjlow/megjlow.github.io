@@ -101,13 +101,13 @@ new (function() {
   function doSend(message)
   {
     console.log("SENT: " + message);
-    ext.websocket.send(message);
+    websocket.send(message);
   }
   
   function onOpen(evt)
   {
     console.log("Connected");
-    ext.doSend("WebSocket rocks");
+    doSend("WebSocket rocks");
   }
   
   ext._getStatus = function() {
