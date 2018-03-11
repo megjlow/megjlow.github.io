@@ -132,10 +132,10 @@ new (function() {
 	
   ext.connect = function() {
     if(ext.socket == null) {
-      ext.socket = new WebSocket("ws://" + ext.ip);
+      ext.socket = new WebSocket("ws://" + ext.ip, 'arduino');
       ext.socket.onopen = function(evt) {ext.onOpen(evt)};
       ext.socket.onmessage = function(evt) {ext.onMessage(evt)};
-      ext.socket.onclose = function(evt) {onClose(evt)};
+      ext.socket.onclose = function(evt) {ext.onClose(evt)};
     }
     else {
       if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
