@@ -15,6 +15,7 @@ Pwm pins 1 and 2 map to the Feather Huzza pins 4 and 5
 new (function() {
 	var ext = this;
 	ext.isReady = false;
+	ext.socket = null;
  
  	var getUrlParameter = function getUrlParameter(sParam) {
 	    var sPageURL = decodeURIComponent(document.currentScript.src.split("?")[1]),
@@ -115,16 +116,38 @@ new (function() {
     ext.doSend("WebSocket rocks");
   }
   
+  ext.onClose = function(evt) {
+    ext.socket = null;
+  }
+  
   ext._getStatus = function() {
-  	return {status: 2, msg: 'Device connected'}
+    var retval = {status: 1, msg: 'Not Connected'};
+    if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
+      retval = {status: 2, msg: 'Device connected'};
+    }
+    return retval;
   };
+	//CONNECTING OPEN CLOSING or CLOSED
+	
+  ext.connect = function() {
+    if(ext.socket == null) {
+      ext.socket = new WebSocket("ws://" + ext.ip);
+      ext.socket.onopen = function(evt) {ext.onOpen(evt)};
+      ext.socket.onmessage = function(evt) {ext.onMessage(evt)};
+      ext.socket.onclose = function(evt) {onClose(evt)};
+    }
+    else {
+      if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
+	ext.socket = null;
+        ext.connect();
+      }
+    }
+    // if socket is in open or connecting state we're not going to do anything
+  }
 
   ext.getPwm = function(pin) {
   };
   ext.setPwm = function(pin, setting) {
-    	ext.websocket = new WebSocket("ws://192.168.2.106");
-	ext.websocket.onopen = function(evt) { ext.onOpen(evt) };
-	ext.websocket.onmessage = function(evt) { ext.onMessage(evt) };
     var p = 4;
     if(pin == 2) {
       p = 5;
