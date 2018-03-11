@@ -119,6 +119,7 @@ new (function() {
   ext.getPwm = function(pin) {
   };
   ext.setPwm = function(pin, setting) {
+	  internalStatus();
     var p = 4;
     if(pin == 2) {
       p = 5;
