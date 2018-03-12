@@ -104,8 +104,10 @@ new (function() {
   }
   
   ext.disconnect = function() {
-    ext.socket.close();
-    ext.socket = null;
+    if(ext.socket != null) {
+      ext.socket.close();
+      ext.socket = null;
+    }
   }
   
   ext.onMessage = function(evt)
