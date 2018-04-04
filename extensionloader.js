@@ -42,8 +42,9 @@ new (function() {
   	
   	ScratchExtensions.register("extensionloader", descriptor, ext);
   	
+	console.log(ext.url);
   	if(ext.url != undefined) {
   		ext.loadBlock(ext.url);
-    }
+    	}
 	
 });
