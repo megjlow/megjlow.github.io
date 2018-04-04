@@ -6,24 +6,6 @@ Accepts a url as a parameter which can include url parameters e.g. https://megjl
 new (function() {
 	var ext = this;
 	
-	var getUrlParameter = function getUrlParameter(sParam) {
-	    var sPageURL = decodeURIComponent(document.currentScript.src.split("?")[1]),
-	        sURLVariables = sPageURL.split('&'),
-	        sParameterName,
-	        i;
-	
-	    for (i = 0; i < sURLVariables.length; i++) {
-	        sParameterName = sURLVariables[i].split('=');
-	
-	        if (sParameterName[0] === sParam) {
-	            return sParameterName[1] === undefined ? true : sParameterName[1];
-	        }
-	    }
-	};
-	
-	console.log("url"); console.log(document.currentScript.src);
-	ext.url = getUrlParameter("extUrl");
-	
 	var descriptor = {
     	blocks: [
       		[' ', 'Load extension block %s', 'loadBlock', 'url', 'url'],
@@ -42,10 +24,5 @@ new (function() {
   	};
   	
   	ScratchExtensions.register("extensionloader", descriptor, ext);
-  	
-	console.log(ext.url);
-  	if(ext.url != undefined) {
-  		ext.loadBlock(ext.url);
-    	}
 	
 });
