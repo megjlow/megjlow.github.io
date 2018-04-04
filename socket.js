@@ -112,7 +112,7 @@ new (function() {
   
   ext.onMessage = function(evt)
   {
-    console.log("Received: " + evt.data);
+    console.log("Received: " + decodeURIComponent(evt.data));
   }
   
   ext.doSend = function(message)
