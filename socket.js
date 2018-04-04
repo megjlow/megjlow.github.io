@@ -142,7 +142,7 @@ new (function() {
 	
   ext.connect = function() {
     if(ext.socket == null) {
-      ext.socket = new WebSocket("ws://" + ext.ip, 'arduino');
+      ext.socket = new WebSocket("ws://" + ext.ip, 'firmata');
       ext.socket.onopen = function(evt) {ext.onOpen(evt)};
       ext.socket.onmessage = function(evt) {ext.onMessage(evt)};
       ext.socket.onclose = function(evt) {ext.onClose(evt)};
