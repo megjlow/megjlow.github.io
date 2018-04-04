@@ -21,6 +21,7 @@ new (function() {
 	    }
 	};
 	
+	console.log("url"); console.log(document.currentScript.src);
 	ext.url = getUrlParameter("extUrl");
 	
 	var descriptor = {
