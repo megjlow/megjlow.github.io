@@ -108,7 +108,7 @@ new (function() {
     
     console.log("sent");
     
-    bytearray[0] = 0x90;
+    bytearray[0] = 0xF5;
     bytearray[1] = 2;
     bytearray[2] = 1;
     ext.socket.send(bytearray.buffer);
