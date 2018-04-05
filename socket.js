@@ -101,7 +101,7 @@ new (function() {
     ext.socket.send(bytearray.buffer);
     */
     
-    bytearray[0] = PIN_MODE;
+    bytearray[0] = 0xF4;// PIN_MODE;
     bytearray[1] = pin;
     bytearray[2] = 0x01; // output
     ext.socket.send(bytearray.buffer);
