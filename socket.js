@@ -115,14 +115,6 @@ new (function() {
     
   }
   
-  ext.digitalWrite(pin, val) {
-  	//DIGITAL_MESSAGE = 0x90;
-  	var bytearray = new Uint8Array(3);
-  	bytearray[0] = 0x90; // DIGITAL_MESSAGE;
-  	bytearray[1] = pin;
-  	bytearray[2] = val;
-  }
-  
   ext.isConnected = function() {
     var retval = false;
     if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
