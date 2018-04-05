@@ -93,6 +93,11 @@ new (function() {
   ext.setPinMode = function(pin, mode) {
     console.log("setPinMode " + pin);
     console.log("setPinMode " + mode);
+    var bytearray = new Uint8Array(3);
+    bytearray[0] = 0xF0;
+    bytearray[1] = 0x69;
+    bytearray[2] = 0xF7;
+    ext.socket.send(bytearray.buffer);
   }
   
   ext.isConnected = function() {
