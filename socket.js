@@ -98,6 +98,7 @@ new (function() {
     bytearray[1] = 0x69;
     bytearray[2] = 0xF7;
     ext.socket.send(bytearray.buffer);
+    console.log("sent");
   }
   
   ext.isConnected = function() {
