@@ -100,11 +100,11 @@ new (function() {
     bytearray[2] = 0xF7;
     ext.socket.send(bytearray.buffer);
     */
-    //writeToTransport(this, [PIN_MODE, pin, mode]);
     
     bytearray[0] = PIN_MODE;
     bytearray[1] = pin;
     bytearray[2] = 0x01; // output
+    ext.socket.send(bytearray.buffer);
     
     console.log("sent");
   }
