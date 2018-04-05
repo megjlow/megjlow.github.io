@@ -68,10 +68,10 @@ new (function() {
   	if(ext.name == undefined) {
   		var descriptor = {
 	    	blocks: [
-			[' ', ext.ip + ': connect', 'connect'],
-			[' ', ext.ip + ': disconnect', 'disconnect'],
-			['b', ext.ip + ': isConnected', 'isConnected'],
-			[' ', ext.ip + ': setPinMode %m.pin %m.io %m.ioMode', 'setPinMode', 0, 'output', 'digital'],
+				[' ', ext.ip + ': connect', 'connect'],
+				[' ', ext.ip + ': disconnect', 'disconnect'],
+				['b', ext.ip + ': isConnected', 'isConnected'],
+				[' ', ext.ip + ': setPinMode %m.pin %m.io %m.ioMode', 'setPinMode', 0, 'output', 'digital'],
 	      		[' ', ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 	      		[' ', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
@@ -81,8 +81,8 @@ new (function() {
 	      		'pin': ['1', '2', '3'],
 	      		'dsetting': ['on', 'off'],
 	      		'ppin': ['1', '2'],
-			'io': ['output', 'input'],
-			'ioMode': ['digital', 'pwm']
+				'io': ['output', 'input'],
+				'ioMode': ['digital', 'pwm']
 	     	},
 	    	url: 'http://www.warwick.ac.uk/tilesfortales'
 	  	};
@@ -94,10 +94,18 @@ new (function() {
     console.log("setPinMode " + pin);
     console.log("setPinMode " + mode);
     var bytearray = new Uint8Array(3);
+    /*
     bytearray[0] = 0xF0;
     bytearray[1] = 0x69;
     bytearray[2] = 0xF7;
     ext.socket.send(bytearray.buffer);
+    */
+    //writeToTransport(this, [PIN_MODE, pin, mode]);
+    
+    bytearray[0] = PIN_MODE;
+    bytearray[1] = pin;
+    bytearray[2] = 0x01; // output
+    
     console.log("sent");
   }
   
@@ -187,24 +195,7 @@ new (function() {
 	    if(setting == 'off') {
 	      s = 0;
 	    }
-	    var p = 12;
-	    if(pin == 1) {
-	      p = 12;
-	    }
-	    else if(pin == 2) {
-	      p = 13;
-	    }
-	    else if(pin == 3) {
-	      p = 14;
-	    }
-	    var url = ext.url + '/gpio' + p + '/' + s; 
-		$.ajax({
-			type: 'POST', 
-			url: url,
-			success: function(response) {
-			},
-			timout: 1500
-		});
+	    
 	};
 	
 	if(ext.name != undefined) {
