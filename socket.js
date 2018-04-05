@@ -107,6 +107,20 @@ new (function() {
     ext.socket.send(bytearray.buffer);
     
     console.log("sent");
+    
+    bytearray[0] = 0x90;
+    bytearray[1] = 2;
+    bytearray[2] = 1;
+    ext.socket.send(bytearray.buffer);
+    
+  }
+  
+  ext.digitalWrite(pin, val) {
+  	//DIGITAL_MESSAGE = 0x90;
+  	var bytearray = new Uint8Array(3);
+  	bytearray[0] = 0x90; // DIGITAL_MESSAGE;
+  	bytearray[1] = pin;
+  	bytearray[2] = val;
   }
   
   ext.isConnected = function() {
