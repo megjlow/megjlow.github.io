@@ -198,7 +198,7 @@ new (function() {
 	    }
 	    bytearray[0] = 0xF5; // set digital pin value
 	    bytearray[1] = 2;
-	    bytearray[2] = 0;
+	    bytearray[2] = s;
 	    ext.socket.send(bytearray.buffer);
 	    
 	    console.log("sent2");
