@@ -203,7 +203,9 @@ new (function() {
 	    
 	    console.log("bytearray length: " + bytearray.length);
 	    
-	    ext.socket.send(bytearray.buffer);
+	    var s = String.fromCharCode.apply(null, bytearray);
+	    
+	    ext.socket.send(s);
 	    
 	    console.log("setDigital");
 	};
