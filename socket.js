@@ -193,7 +193,7 @@ new (function() {
   };
   
   	ext.getDigital = function(pin) {
-  		var bytearray = new Uint8Array(2);
+  		var bytearray = new Uint8Array(4);
   		bytearray[0] = 0xF0; // Start sysex
   		bytearray[1] = 0x6D; // PIN_STATE_QUERY  
   		bytearray[2] = pin;
