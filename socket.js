@@ -127,13 +127,13 @@ new (function() {
   
   ext.onMessage = function(evt)
   {
-    console.log("Received: " + evt.data);
+    console.log("Received: " + evt.data + " length " + evt.data.size);
     var dv = new DataView(evt.data);
-    var x = dv.getUint8(0);
-    console.log("first byte " + x.toString(16));
-    if(x == 0xF0) {
-    	console.log("got start sysex");
+    var r = "received message: ";
+    for(var i=0; i<dv.byteLength; i++) {
+    	r = r + dv.getUint8(i).toString(16);
     }
+   	console.log(r);
   }
   
   ext.doSend = function(message)
