@@ -205,9 +205,9 @@ new (function() {
 	    
 	    var s = String.fromCharCode.apply(null, bytearray);
 	    
-	   	var blob = new Blob([byrearray], {type: 'application/octet-binary'});
+	   	var blob = new Blob([bytearray], {type: 'application/octet-binary'});
 	    
-	    ext.socket.send(blog);
+	    ext.socket.send(blob);
 	    
 	    console.log("setDigital");
 	};
