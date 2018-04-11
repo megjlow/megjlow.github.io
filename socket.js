@@ -196,10 +196,11 @@ new (function() {
 	    if(setting == 'off') {
 	      s = 0;
 	    }
-	    var bytearray = new Uint8Array(3);
+	    var bytearray = new Uint8Array(4);
 	    bytearray[0] = 0xF5; // set digital pin value
 	    bytearray[1] = 2;
 	    bytearray[2] = s;
+	    bytearray[2] = 0;
 	    ext.socket.send(bytearray.buffer);
 	    
 	    console.log("setDigital");
