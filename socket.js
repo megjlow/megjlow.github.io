@@ -195,7 +195,8 @@ new (function() {
   	ext.getDigital = function(pin) {
   		var bytearray = new Uint8Array(2);
   		bytearray[0] = 0xD0; // report digital
-  		bytearray[1] = pin;
+  		bytearray[1] = pin >> 3;
+  		bytearray[1] = bytearray[1] | 1;
   		ext.socket.send(bytearray);
 	};
 	
