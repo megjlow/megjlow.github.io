@@ -131,6 +131,9 @@ new (function() {
     var dv = new DataView(evt.data);
     var x = dv.getUint8(0);
     console.log("first byte " + x.toString(16));
+    if(x == 0xF0) {
+    	console.log("got start sysex");
+    }
   }
   
   ext.doSend = function(message)
