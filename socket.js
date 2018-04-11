@@ -128,6 +128,9 @@ new (function() {
   ext.onMessage = function(evt)
   {
     console.log("Received: " + evt.data);
+    var dv = new DataView(evt.data);
+    var x = dv.getUint8(0);
+    console.log("first byte " + x.toString(16));
   }
   
   ext.doSend = function(message)
@@ -190,6 +193,10 @@ new (function() {
   };
   
   	ext.getDigital = function(pin) {
+  		var bytearray = new Uint8Array(2);
+  		bytearray[0] = 0xD0; // report digital
+  		bytearray[1] = 0;
+  		ext.socket.send(bytearray);
 	};
 	
 	ext.setDigital = function(pin, setting) {
