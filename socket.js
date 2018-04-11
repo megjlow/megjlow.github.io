@@ -198,16 +198,16 @@ new (function() {
 	    }
 	    var bytearray = new Uint8Array(3);
 	    bytearray[0] = 0xF5; // set digital pin value
-	    bytearray[1] = 2;
-	    bytearray[2] = s;
+	    bytearray[1] = 0x02;
+	    bytearray[2] = 0x00;
 	    
 	    console.log("bytearray length: " + bytearray.length);
 	    
-	    var s = String.fromCharCode.apply(null, bytearray);
+	    //var s = String.fromCharCode.apply(null, bytearray);
 	    
-	   	var blob = new Blob([bytearray], {type: 'application/octet-binary'});
+	   	//var blob = new Blob([bytearray], {type: 'application/octet-binary'});
 	    
-	    ext.socket.send(blob);
+	    ext.socket.send(bytearray.buffer);
 	    
 	    console.log("setDigital");
 	};
