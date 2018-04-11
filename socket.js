@@ -108,13 +108,6 @@ new (function() {
     
     console.log("sent");
     
-    bytearray[0] = 0xF5;
-    bytearray[1] = 2;
-    bytearray[2] = 1;
-    ext.socket.send(bytearray.buffer);
-    
-    console.log("sent2");
-    
   }
   
   ext.isConnected = function() {
@@ -203,7 +196,12 @@ new (function() {
 	    if(setting == 'off') {
 	      s = 0;
 	    }
+	    bytearray[0] = 0xF5; // set digital pin value
+	    bytearray[1] = 2;
+	    bytearray[2] = 0;
+	    ext.socket.send(bytearray.buffer);
 	    
+	    console.log("sent2");
 	};
 	
 	if(ext.name != undefined) {
