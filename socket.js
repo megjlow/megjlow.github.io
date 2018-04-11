@@ -131,7 +131,7 @@ new (function() {
     var dv = new DataView(evt.data);
     var r = "received message: ";
     for(var i=0; i<dv.byteLength; i++) {
-    	r = r + dv.getUint8(i).toString(16);
+    	r = r + " " + dv.getUint8(i).toString(16);
     }
    	console.log(r);
   }
