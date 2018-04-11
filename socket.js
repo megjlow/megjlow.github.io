@@ -194,9 +194,10 @@ new (function() {
   
   	ext.getDigital = function(pin) {
   		var bytearray = new Uint8Array(2);
-  		bytearray[0] = 0xD0; // report digital
-  		bytearray[1] = pin >> 3;
-  		bytearray[1] = bytearray[1] | 1;
+  		bytearray[0] = 0xF0; // Start sysex
+  		bytearray[1] = 0x6D; // PIN_STATE_QUERY  
+  		bytearray[2] = pin;
+  		bytearray[3] = 0xF7; // end sysex
   		ext.socket.send(bytearray);
 	};
 	
