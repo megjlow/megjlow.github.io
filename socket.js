@@ -201,7 +201,7 @@ new (function() {
 	    bytearray[2] = s;
 	    ext.socket.send(bytearray.buffer);
 	    
-	    console.log("sent2");
+	    console.log("setDigital");
 	};
 	
 	if(ext.name != undefined) {
