@@ -127,12 +127,12 @@ new (function() {
   
   ext.onMessage = function(evt)
   {
-    console.log("Received: " + evt.data + " length " + evt.data.size);
     var dv = new DataView(evt.data);
     var r = "received message: ";
     for(var i=0; i<dv.byteLength; i++) {
     	r = r + " " + dv.getUint8(i).toString(16);
     }
+    // 6e PIN_STATE_RESPONSE
    	console.log(r);
   }
   
@@ -159,7 +159,6 @@ new (function() {
     }
     return retval;
   };
-	//CONNECTING OPEN CLOSING or CLOSED
 	
   ext.connect = function() {
     if(ext.socket == null) {
@@ -202,6 +201,10 @@ new (function() {
   		bytearray[2] = pin;
   		bytearray[3] = 0xF7; // end sysex
   		ext.socket.send(bytearray);
+  		ext.pin-state-1 = new Promise(resolve => {
+  			setTimeout(() => resolve(10); }, 5000);
+  		});
+  		return ext.pin-state-1;
 	};
 	
 	ext.setDigital = function(pin, setting) {
