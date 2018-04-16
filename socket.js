@@ -204,7 +204,7 @@ new (function() {
   		ext.pin-state-1 = new Promise(resolve => {
   			setTimeout(() => resolve(10); }, 5000);
   		});
-  		return ext.pin-state-1;
+  		return ext.pin-state-1();
 	};
 	
 	ext.setDigital = function(pin, setting) {
