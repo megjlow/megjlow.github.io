@@ -201,10 +201,9 @@ new (function() {
   		bytearray[2] = pin;
   		bytearray[3] = 0xF7; // end sysex
   		ext.socket.send(bytearray);
-  		ext.pin-state-1 = new Promise(resolve => {
+  		return = new Promise(resolve => {
   			setTimeout(() => resolve(10); }, 5000);
   		});
-  		return ext.pin-state-1();
 	};
 	
 	ext.setDigital = function(pin, setting) {
