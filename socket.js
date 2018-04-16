@@ -74,7 +74,7 @@ new (function() {
 				[' ', ext.ip + ': setPinMode %m.pin %m.io %m.ioMode', 'setPinMode', 0, 'output', 'digital'],
 	      		[' ', ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
-	      		['R', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
+	      		['r', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
 	    	],
 	    	'menus': {
@@ -194,16 +194,17 @@ new (function() {
     setTimeout(function(){ }, 10);
   };
   
-  	ext.getDigital = function(pin) {
+  	ext.getDigital = async function(pin) {
   		var bytearray = new Uint8Array(4);
   		bytearray[0] = 0xF0; // Start sysex
   		bytearray[1] = 0x6D; // PIN_STATE_QUERY  
   		bytearray[2] = pin;
   		bytearray[3] = 0xF7; // end sysex
   		ext.socket.send(bytearray);
-  		return new Promise(resolve => {
+  		var p = new Promise(resolve => {
   			setTimeout(() => { resolve(10); }, 5000);
   		});
+  		await p;
 	};
 	
 	ext.setDigital = function(pin, setting) {
