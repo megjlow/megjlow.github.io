@@ -201,8 +201,8 @@ new (function() {
   		bytearray[2] = pin;
   		bytearray[3] = 0xF7; // end sysex
   		ext.socket.send(bytearray);
-  		return = new Promise(resolve => {
-  			setTimeout(() => resolve(10); }, 5000);
+  		return new Promise(resolve => {
+  			setTimeout(() => { resolve(10); }, 5000);
   		});
 	};
 	
