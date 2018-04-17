@@ -214,7 +214,8 @@ new (function() {
   		//ext.socket.send(bytearray);
   		//f1();
 		console.log("ext.getDigital complete");
-		callback();
+		setTimeout(() => { callback(10); }, 2000);
+		//callback(10);
 	};
 	
 	ext.setDigital = function(pin, setting) {
