@@ -199,6 +199,11 @@ new (function() {
   			setTimeout(() => { resolve(10); }, 5000);
   		});
 	}
+	
+	async function f1() {
+	  var x = await ext.getDigitalAsync(10);
+	  console.log(x); // 10
+	}
   
   	ext.getDigital = function(pin) {
   		var bytearray = new Uint8Array(4);
@@ -207,9 +212,7 @@ new (function() {
   		bytearray[2] = pin;
   		bytearray[3] = 0xF7; // end sysex
   		//ext.socket.send(bytearray);
-  		var p = ext.getDigitalAsync(pin);
-  		var x = await p;
-		console.log(x);
+  		f1();
 		console.log("ext.getDigital complete");
 	};
 	
