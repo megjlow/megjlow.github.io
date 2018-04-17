@@ -202,11 +202,9 @@ new (function() {
   		bytearray[3] = 0xF7; // end sysex
   		//ext.socket.send(bytearray);
   		//f1();
-		ext.pinCallback1 = function() {
-			setTimeout(() => { callback(10); }, 2000);
-		};
+		ext.pinCallback1 = callback;
 		console.log("ext.getDigitalAsync");
-		//setTimeout(() => { callback(10); }, 2000);
+		setTimeout(() => { ext.pinCallback1(10); }, 2000);
 		console.log("ext.getDigital complete");
 		//setTimeout(() => { callback(10); }, 2000);
 	};
