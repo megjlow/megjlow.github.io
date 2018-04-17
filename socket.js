@@ -204,7 +204,7 @@ new (function() {
   		//ext.socket.send(bytearray);
   		//f1();
 		ext.messageQueue["pin-state-" + pin] = callback;
-		console.log("ext.getDigitalAsync");
+		console.log("ext.getDigital");
 		setTimeout(() => { ext.messageQueue["pin-state-" + pin](10); }, 2000);
 		console.log("ext.getDigital complete");
 		//setTimeout(() => { callback(10); }, 2000);
