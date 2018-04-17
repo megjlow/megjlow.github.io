@@ -193,18 +193,6 @@ new (function() {
     });
     setTimeout(function(){ }, 10);
   };
-	
-	ext.getDigitalAsync = function(pin) {
-		var p = new Promise(resolve => {
-  			setTimeout(() => { resolve(10); }, 2000);
-  		});
-	}
-	
-	async function f1(callback) {
-	  var x = await ext.getDigitalAsync(10);
-	  callback(x);
-	  //console.log(x); // 10
-	}
   
   	ext.getDigital = function(pin, callback) {
   		var bytearray = new Uint8Array(4);
@@ -215,7 +203,7 @@ new (function() {
   		//ext.socket.send(bytearray);
   		//f1();
 		console.log("ext.getDigitalAsync");
-		ext.getDigitalAsync(pin).then(callback(10));
+		setTimeout(callback(), 2000);
 		console.log("ext.getDigital complete");
 		//setTimeout(() => { callback(10); }, 2000);
 	};
