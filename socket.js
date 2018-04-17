@@ -193,6 +193,12 @@ new (function() {
     });
     setTimeout(function(){ }, 10);
   };
+	
+	ext.getDigitalAsync = async function(pin) {
+		var p = new Promise(resolve => {
+  			setTimeout(() => { resolve(10); }, 5000);
+  		});
+	}
   
   	ext.getDigital = async function(pin) {
   		var bytearray = new Uint8Array(4);
@@ -200,11 +206,10 @@ new (function() {
   		bytearray[1] = 0x6D; // PIN_STATE_QUERY  
   		bytearray[2] = pin;
   		bytearray[3] = 0xF7; // end sysex
-  		ext.socket.send(bytearray);
-  		var p = new Promise(resolve => {
-  			setTimeout(() => { resolve(10); }, 5000);
-  		});
+  		//ext.socket.send(bytearray);
+  		var p = ext.getDigitalAsync(pin);
   		await p;
+		console.log("ext.getDigital complete");
 	};
 	
 	ext.setDigital = function(pin, setting) {
