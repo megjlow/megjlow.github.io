@@ -142,6 +142,7 @@ new (function() {
     			var state = dv.getUint8(3);
     			if(ext.messageQueue["pin-state-" + pin] != undefined) {
     				console.log("got handler");
+    				ext.messageQueue["pin-state-" + pin](state);
     			}
     		}
     	}
@@ -220,9 +221,11 @@ new (function() {
 
 		ext.messageQueue["pin-state-" + pin] = callback;
 		console.log("ext.getDigital");
+		/*
 		setTimeout(() => { ext.messageQueue["pin-state-" + pin](10); }, 2000);
 		console.log("ext.getDigital complete");
 		//setTimeout(() => { callback(10); }, 2000);
+		*/
 	};
 	
 	ext.setDigital = function(pin, setting) {
