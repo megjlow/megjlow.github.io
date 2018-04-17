@@ -135,6 +135,8 @@ new (function() {
     }
     
     if(dv.byteLength > 0) {
+    	var op = dv.getUint8(0);
+    	/*
     	if(dv.getUint8(0) == 0xFO) { // start sysex
     		if(dv.getUint8(1) == 0x6E) { // pin state response
     			// 2 will be pin number, 3 will be state
@@ -145,6 +147,7 @@ new (function() {
     			}
     		}
     	}
+    	*/
     }
     
     // 6e PIN_STATE_RESPONSE
