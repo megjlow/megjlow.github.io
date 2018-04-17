@@ -133,7 +133,14 @@ new (function() {
     for(var i=0; i<dv.byteLength; i++) {
     	r = r + " " + dv.getUint8(i).toString(16);
     }
+    
+    if(dv.getUint8(
+    
     // 6e PIN_STATE_RESPONSE
+    /*
+    ext.messageQueue["pin-state-" + pin
+    DataView.prototype.byteLength
+    */
    	console.log(r);
   }
   
@@ -201,8 +208,8 @@ new (function() {
   		bytearray[1] = 0x6D; // PIN_STATE_QUERY  
   		bytearray[2] = pin;
   		bytearray[3] = 0xF7; // end sysex
-  		//ext.socket.send(bytearray);
-  		//f1();
+  		ext.socket.send(bytearray);
+
 		ext.messageQueue["pin-state-" + pin] = callback;
 		console.log("ext.getDigital");
 		setTimeout(() => { ext.messageQueue["pin-state-" + pin](10); }, 2000);
