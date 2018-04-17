@@ -200,7 +200,7 @@ new (function() {
   		});
 	}
   
-  	ext.getDigital = async function(pin) {
+  	ext.getDigital = function(pin) {
   		var bytearray = new Uint8Array(4);
   		bytearray[0] = 0xF0; // Start sysex
   		bytearray[1] = 0x6D; // PIN_STATE_QUERY  
@@ -208,7 +208,8 @@ new (function() {
   		bytearray[3] = 0xF7; // end sysex
   		//ext.socket.send(bytearray);
   		var p = ext.getDigitalAsync(pin);
-  		await p;
+  		var x = await p;
+		console.log(x);
 		console.log("ext.getDigital complete");
 	};
 	
