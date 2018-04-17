@@ -134,11 +134,21 @@ new (function() {
     	r = r + " " + dv.getUint8(i).toString(16);
     }
     
+    if(dv.byteLength > 0) {
+    	if(dv.getUint8(0) == 0xFO) { // start sysex
+    		if(dv.getUint8(1) == 0x6E) { // pin state response
+    			// 2 will be pin number, 3 will be state
+    			var pin = dv.getUint8(2);
+    			var state = dv.getUint8(3);
+    			if(ext.messageQueue["pin-state-" + pin] != undefined) {
+    				console.log("got handler");
+    			}
+    		}
+    	}
+    }
+    
     // 6e PIN_STATE_RESPONSE
-    /*
-    ext.messageQueue["pin-state-" + pin
-    DataView.prototype.byteLength
-    */
+
    	console.log(r);
   }
   
