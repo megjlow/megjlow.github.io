@@ -134,8 +134,6 @@ new (function() {
     	r = r + " " + dv.getUint8(i).toString(16);
     }
     
-    if(dv.getUint8(
-    
     // 6e PIN_STATE_RESPONSE
     /*
     ext.messageQueue["pin-state-" + pin
