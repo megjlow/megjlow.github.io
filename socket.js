@@ -203,7 +203,7 @@ new (function() {
   		//ext.socket.send(bytearray);
   		//f1();
 		console.log("ext.getDigitalAsync");
-		setTimeout(callback(), 2000);
+		setTimeout(callback(10), 2000);
 		console.log("ext.getDigital complete");
 		//setTimeout(() => { callback(10); }, 2000);
 	};
