@@ -214,8 +214,9 @@ new (function() {
   		bytearray[3] = 0xF7; // end sysex
   		//ext.socket.send(bytearray);
   		//f1();
+		console.log("ext.getDigitalAsync");
 		ext.getDigitalAsync(pin).then(callback(10));
-		//console.log("ext.getDigital complete");
+		console.log("ext.getDigital complete");
 		//setTimeout(() => { callback(10); }, 2000);
 	};
 	
