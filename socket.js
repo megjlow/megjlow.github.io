@@ -16,6 +16,7 @@ new (function() {
 	var ext = this;
 	ext.isReady = false;
 	ext.socket = null;
+	ext.messageQueue = {};
  
  	var getUrlParameter = function getUrlParameter(sParam) {
 	    var sPageURL = decodeURIComponent(document.currentScript.src.split("?")[1]),
@@ -202,9 +203,9 @@ new (function() {
   		bytearray[3] = 0xF7; // end sysex
   		//ext.socket.send(bytearray);
   		//f1();
-		ext.pinCallback1 = callback;
+		ext.messageQueue["pin-state-" + pin] = callback;
 		console.log("ext.getDigitalAsync");
-		setTimeout(() => { ext.pinCallback1(10); }, 2000);
+		setTimeout(() => { ext.messageQueue["pin-state-" + pin](10); }, 2000);
 		console.log("ext.getDigital complete");
 		//setTimeout(() => { callback(10); }, 2000);
 	};
