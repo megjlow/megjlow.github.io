@@ -194,7 +194,7 @@ new (function() {
     setTimeout(function(){ }, 10);
   };
 	
-	ext.getDigitalAsync = async function(pin) {
+	ext.getDigitalAsync = function(pin) {
 		var p = new Promise(resolve => {
   			setTimeout(() => { resolve(10); }, 5000);
   		});
