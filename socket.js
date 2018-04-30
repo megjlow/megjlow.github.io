@@ -223,13 +223,6 @@ new (function() {
 
 		ext.messageQueue["pin-state-" + pin] = callback;
 		console.log("ext.getDigital");
-
-		setTimeout(() => { console.log("DONE"); }, 2000);
-		/*
-		setTimeout(() => { ext.messageQueue["pin-state-" + pin](10); }, 2000);
-		console.log("ext.getDigital complete");
-		//setTimeout(() => { callback(10); }, 2000);
-		*/
 	};
 	
 	ext.setDigital = function(pin, setting) {
