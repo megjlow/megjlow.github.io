@@ -137,9 +137,9 @@ new (function() {
     if(dv.byteLength > 0) {
     	if(dv.getUint8(0) == 0xF0) { // start sysex
     		if(dv.getUint8(1) == 0x6E) { // pin state response
-    			// 2 will be pin number, 3 will be state
+    			// 2 will be pin number, 4 will be state
     			var pin = dv.getUint8(2);
-    			var state = dv.getUint8(3);
+    			var state = dv.getUint8(4);
     			console.log("state " + state);
     			console.log("state " + state >> 7);
     			if(ext.messageQueue["pin-state-" + pin] != undefined) {
@@ -223,6 +223,8 @@ new (function() {
 
 		ext.messageQueue["pin-state-" + pin] = callback;
 		console.log("ext.getDigital");
+
+		setTimeout(() => { console.log("DONE"); }, 2000);
 		/*
 		setTimeout(() => { ext.messageQueue["pin-state-" + pin](10); }, 2000);
 		console.log("ext.getDigital complete");
