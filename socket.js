@@ -202,15 +202,17 @@ new (function() {
 	}
   
   	ext.getDigital = function(pin, callback) {
-  		var bytearray = new Uint8Array(4);
-  		bytearray[0] = 0xF0; // Start sysex
-  		bytearray[1] = 0x6D; // PIN_STATE_QUERY  
-  		bytearray[2] = pin;
-  		bytearray[3] = 0xF7; // end sysex
-  		ext.socket.send(bytearray);
-
-		ext.messageQueue["pin-state-" + pin] = callback;
-		console.log("ext.getDigital");
+  		if(ext.isConnected()) {
+  			console.log("getDigital pin:" + pin);
+	  		var bytearray = new Uint8Array(4);
+	  		bytearray[0] = 0xF0; // Start sysex
+	  		bytearray[1] = 0x6D; // PIN_STATE_QUERY  
+	  		bytearray[2] = pin;
+	  		bytearray[3] = 0xF7; // end sysex
+	  		ext.socket.send(bytearray);
+	
+			ext.messageQueue["pin-state-" + pin] = callback;
+		}
 	};
 	
 	ext.setDigital = function(pin, setting) {
