@@ -152,10 +152,11 @@ new (function() {
   
 	ext.onOpen = function(evt) {
 		console.log("Connected");
-		ext.doSend("WebSocket rocks");
+		//ext.doSend("WebSocket rocks");
 	}
   
 	ext.onClose = function(evt) {
+		console.log("onClose");
 		ext.socket = null;
 	}
   
@@ -176,8 +177,8 @@ new (function() {
 			ext.socket.onclose = function(evt) {ext.onClose(evt)};
 		}
 		else if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
-				ext.socket = null;
-				ext.connect();
+			ext.socket = null;
+			ext.connect();
 		}
 		// if socket is in open or connecting state we're not going to do anything
 	}
