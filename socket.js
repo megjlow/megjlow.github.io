@@ -183,22 +183,23 @@ new (function() {
 		// if socket is in open or connecting state we're not going to do anything
 	}
 
-  ext.getPwm = function(pin) {
-  };
-  ext.setPwm = function(pin, setting) {
-    var p = 4;
-    if(pin == 2) {
-      p = 5;
-    }
-    var url = ext.url + '/gpio' + p + '/' + setting;
-    $.ajax({
-      type: 'POST',
-      url: url,
-      success: function(response) {
-      }
-    });
-    setTimeout(function(){ }, 10);
-  };
+	ext.getPwm = function(pin) {
+	};
+	
+	ext.setPwm = function(pin, setting) {
+		var p = 4;
+		if(pin == 2) {
+			p = 5;
+		}
+		var url = ext.url + '/gpio' + p + '/' + setting;
+		$.ajax({
+			type: 'POST',
+			url: url,
+			success: function(response) {
+			}
+		});
+		setTimeout(function(){ }, 10);
+	}
   
   	ext.getDigital = function(pin, callback) {
   		var bytearray = new Uint8Array(4);
@@ -213,19 +214,20 @@ new (function() {
 	};
 	
 	ext.setDigital = function(pin, setting) {
-	    var s = 1;
-	    if(setting == 'off') {
-	      s = 0;
+		if(ext.isConnected()) {
+			console.log("setDigital pin:" + pin + " setting:" + setting);
+		    var s = 1;
+		    if(setting == 'off') {
+		      s = 0;
+		    }
+		    var bytearray = new Uint8Array(3);
+		    bytearray[0] = 0xF5; // set digital pin value
+		    bytearray[1] = pin;
+		    bytearray[2] = s;
+		    
+		    ext.socket.send(bytearray);
 	    }
-	    var bytearray = new Uint8Array(3);
-	    bytearray[0] = 0xF5; // set digital pin value
-	    bytearray[1] = pin;
-	    bytearray[2] = s;
-	    
-	    ext.socket.send(bytearray);
-	    
-	    console.log("setDigital");
-	};
+	}
 	
 	if(ext.name != undefined) {
 		ScratchExtensions.register(ext.name, descriptor, ext);
