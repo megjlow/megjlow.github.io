@@ -102,90 +102,85 @@ new (function() {
 		}
   	}
   
-  ext.isConnected = function() {
-    var retval = false;
-    if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
-      retval = true;
-    }
-    return retval;
-  }
+	ext.isConnected = function() {
+		var retval = false;
+		if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
+			retval = true;
+		}
+		return retval;
+	}
   
-  ext.disconnect = function() {
-    if(ext.socket != null) {
-      ext.socket.close();
-      ext.socket = null;
-    }
-  }
+	ext.disconnect = function() {
+		if(ext.socket != null) {
+			ext.socket.close();
+			ext.socket = null;
+		}
+	}
   
-  ext.onMessage = function(evt)
-  {
-    var dv = new DataView(evt.data);
-    var r = "received message: ";
-    for(var i=0; i<dv.byteLength; i++) {
-    	r = r + " " + dv.getUint8(i).toString(16);
-    }
-    
-    if(dv.byteLength > 0) {
-    	if(dv.getUint8(0) == 0xF0) { // start sysex
-    		if(dv.getUint8(1) == 0x6E) { // pin state response
-    			// 2 will be pin number, 4 will be state
-    			var pin = dv.getUint8(2);
-    			var state = dv.getUint8(4);
-    			console.log("state " + state);
-    			console.log("state " + state >> 7);
-    			if(ext.messageQueue["pin-state-" + pin] != undefined) {
-    				console.log("got handler");
-    				ext.messageQueue["pin-state-" + pin](state);
-    			}
-    		}
-    	}
-    }
-    
-    // 6e PIN_STATE_RESPONSE
-
-   	console.log(r);
-  }
+	ext.onMessage = function(evt) {
+		var dv = new DataView(evt.data);
+		var r = "received message: ";
+		for(var i=0; i<dv.byteLength; i++) {
+			r = r + " " + dv.getUint8(i).toString(16);
+		}
+		
+		if(dv.byteLength > 0) {
+			if(dv.getUint8(0) == 0xF0) { // start sysex
+				if(dv.getUint8(1) == 0x6E) { // pin state response
+					// 2 will be pin number, 4 will be state
+					var pin = dv.getUint8(2);
+					var state = dv.getUint8(4);
+					console.log("state " + state);
+					console.log("state " + state >> 7);
+					if(ext.messageQueue["pin-state-" + pin] != undefined) {
+						console.log("got handler");
+						ext.messageQueue["pin-state-" + pin](state);
+					}
+				}
+			}
+		}
+		
+		// 6e PIN_STATE_RESPONSE
+		
+		console.log(r);
+	}
   
-  ext.doSend = function(message)
-  {
-    console.log("SENT: " + message);
-    ext.socket.send(message);
-  }
+	ext.doSend = function(message) {
+		console.log("SENT: " + message);
+		ext.socket.send(message);
+	}
   
-  ext.onOpen = function(evt)
-  {
-    console.log("Connected");
-    ext.doSend("WebSocket rocks");
-  }
+	ext.onOpen = function(evt) {
+		console.log("Connected");
+		ext.doSend("WebSocket rocks");
+	}
   
-  ext.onClose = function(evt) {
-    ext.socket = null;
-  }
+	ext.onClose = function(evt) {
+		ext.socket = null;
+	}
   
-  ext._getStatus = function() {
-    var retval = {status: 1, msg: 'Not Connected'};
-    if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
-      retval = {status: 2, msg: 'Device connected'};
-    }
-    return retval;
-  };
+	ext._getStatus = function() {
+		var retval = {status: 1, msg: 'Not Connected'};
+		if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
+			retval = {status: 2, msg: 'Device connected'};
+		}
+		return retval;
+	}
 	
-  ext.connect = function() {
-    if(ext.socket == null) {
-      ext.socket = new WebSocket("ws://" + ext.ip, 'firmata');
-      ext.socket.binaryType = "arraybuffer";
-      ext.socket.onopen = function(evt) {ext.onOpen(evt)};
-      ext.socket.onmessage = function(evt) {ext.onMessage(evt)};
-      ext.socket.onclose = function(evt) {ext.onClose(evt)};
-    }
-    else {
-      if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
-	ext.socket = null;
-        ext.connect();
-      }
-    }
-    // if socket is in open or connecting state we're not going to do anything
-  }
+	ext.connect = function() {
+		if(ext.socket == null) {
+			ext.socket = new WebSocket("ws://" + ext.ip, 'firmata');
+			ext.socket.binaryType = "arraybuffer";
+			ext.socket.onopen = function(evt) {ext.onOpen(evt)};
+			ext.socket.onmessage = function(evt) {ext.onMessage(evt)};
+			ext.socket.onclose = function(evt) {ext.onClose(evt)};
+		}
+		else if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
+				ext.socket = null;
+				ext.connect();
+		}
+		// if socket is in open or connecting state we're not going to do anything
+	}
 
   ext.getPwm = function(pin) {
   };
