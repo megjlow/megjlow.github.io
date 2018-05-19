@@ -91,25 +91,16 @@ new (function() {
 
   ext._shutdown = function() {};
   
-  ext.setPinMode = function(pin, mode) {
-    console.log("setPinMode pin:" + pin + " mode:" + mode);
-    var bytearray = new Uint8Array(3);
-    /*
-    bytearray[0] = 0xF0;
-    bytearray[1] = 0x69;
-    bytearray[2] = 0xF7;
-    ext.socket.send(bytearray.buffer);
-    */
-    
-    bytearray[0] = 0xF4;// PIN_MODE;
-    bytearray[1] = pin;
-    //bytearray[2] = 0x01; // output
-    bytearray[2] = mode == 'output' ? 0x01 : 0x00;
-    ext.socket.send(bytearray.buffer);
-    
-    console.log("sent");
-    
-  }
+  	ext.setPinMode = function(pin, mode) {
+		if(ext.isConnected()) {
+		    console.log("setPinMode pin:" + pin + " mode:" + mode);
+		    var bytearray = new Uint8Array(3);
+		    bytearray[0] = 0xF4;// PIN_MODE;
+		    bytearray[1] = pin;
+		    bytearray[2] = mode == 'output' ? 0x01 : 0x00;
+		    ext.socket.send(bytearray.buffer);
+		}
+  	}
   
   ext.isConnected = function() {
     var retval = false;
