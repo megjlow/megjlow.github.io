@@ -92,8 +92,7 @@ new (function() {
   ext._shutdown = function() {};
   
   ext.setPinMode = function(pin, mode) {
-    console.log("setPinMode " + pin);
-    console.log("setPinMode " + mode);
+    console.log("setPinMode pin:" + pin + " mode:" + mode);
     var bytearray = new Uint8Array(3);
     /*
     bytearray[0] = 0xF0;
@@ -105,7 +104,7 @@ new (function() {
     bytearray[0] = 0xF4;// PIN_MODE;
     bytearray[1] = pin;
     //bytearray[2] = 0x01; // output
-    bytearray[2] = mode;
+    bytearray[2] = mode == 'output' ? 0x01 : 0x00;
     ext.socket.send(bytearray.buffer);
     
     console.log("sent");
