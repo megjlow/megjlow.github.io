@@ -77,7 +77,7 @@ new (function() {
 	      		[' ', ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 	      		['R', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1'],
-	      		['R', ext.ip + ': report digital callback %m.pin', 'reportDigital', '1'] 
+	      		[' ', ext.ip + ': report digital callback %m.pin', 'reportDigital', '1'] 
 	    	],
 	    	'menus': {
 	      		'pin': ['1', '2', '3'],
@@ -94,6 +94,11 @@ new (function() {
 	
 	ext.reportDigital = function(pin) {
 		console.log('reportDigital ' + pin);
+		var bytearray = new Uint8Array(2);
+		bytearray[0] = 0xD0; // report digital
+		bytearray[1] = pin;
+		bytearray[2] = 1; // disable/enable
+		ext.socket.send(bytearray.buffer);
 	}
   
   	ext.setPinMode = function(pin, mode) {
