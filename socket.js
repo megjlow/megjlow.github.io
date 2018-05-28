@@ -77,14 +77,15 @@ new (function() {
 	      		[' ', ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 	      		['R', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1'],
-	      		[' ', ext.ip + ': report digital callback %m.pin', 'reportDigital', '1'] 
+	      		[' ', ext.ip + ': report digital callback %m.pin %m.enableDisable', 'reportDigital', '1', 'enable'] 
 	    	],
 	    	'menus': {
 	      		'pin': ['1', '2', '3'],
 	      		'dsetting': ['on', 'off'],
 	      		'ppin': ['1', '2'],
 				'io': ['output', 'input', 'pwm', 'analog'],
-				'ioMode': ['digital', 'pwm']
+				'ioMode': ['digital', 'pwm'],
+				'enableDisable': ['enable', 'disable']
 	     	},
 	    	url: 'http://www.warwick.ac.uk/tilesfortales'
 	  	};
@@ -92,12 +93,17 @@ new (function() {
 
 	ext._shutdown = function() {};
 	
-	ext.reportDigital = function(pin) {
-		console.log('reportDigital ' + pin);
+	ext.reportDigital = function(pin, setting) {
+		console.log('reportDigital ' + pin + ' ' + setting);
 		var bytearray = new Uint8Array(2);
 		bytearray[0] = 0xD0; // report digital
 		bytearray[1] = pin;
-		bytearray[2] = 1; // disable/enable
+		if('enable' == setting) {
+			bytearray[2] = 1; // disable/enable
+		}
+		else {
+			bytearray[2] = 0;
+		}
 		ext.socket.send(bytearray.buffer);
 	}
   
