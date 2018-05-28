@@ -77,7 +77,7 @@ new (function() {
 	      		[' ', ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 	      		['R', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1'],
-	      		[' ', ext.ip + ': report digital callback %m.port %m.enableDisable', 'reportDigital', '1', 'enable'],
+	      		[' ', ext.ip + ': report digital callback %m.pin %m.enableDisable', 'reportDigital', '1', 'enable'],
 	    	],
 	    	'menus': {
 	      		'pin': ['12', '2', '3'],
