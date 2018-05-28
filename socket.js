@@ -96,13 +96,12 @@ new (function() {
 	ext.reportDigital = function(pin, setting) {
 		console.log('reportDigital ' + pin + ' ' + setting);
 		var bytearray = new Uint8Array(2);
-		bytearray[0] = 0xD0; // report digital
-		bytearray[1] = pin;
+		bytearray[0] = 0xD0 | pin; // report digital
 		if('enable' == setting) {
-			bytearray[2] = 1; // disable/enable
+			bytearray[1] = 1; // disable/enable
 		}
 		else {
-			bytearray[2] = 0;
+			bytearray[1] = 0;
 		}
 		ext.socket.send(bytearray.buffer);
 	}
