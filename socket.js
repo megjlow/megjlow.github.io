@@ -76,28 +76,39 @@ new (function() {
 	      		[' ', ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 	      		['R', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
-	      		[' ', ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
+	      		[' ', ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1'],
+	      		['R', ext.ip + ': report digital callback %m.pin', 'reportDigital', '1'] 
 	    	],
 	    	'menus': {
 	      		'pin': ['1', '2', '3'],
 	      		'dsetting': ['on', 'off'],
 	      		'ppin': ['1', '2'],
-				'io': ['output', 'input'],
+				'io': ['output', 'input', 'pwm', 'analog'],
 				'ioMode': ['digital', 'pwm']
 	     	},
 	    	url: 'http://www.warwick.ac.uk/tilesfortales'
 	  	};
   	}
 
-  ext._shutdown = function() {};
+	ext._shutdown = function() {};
   
   	ext.setPinMode = function(pin, mode) {
 		if(ext.isConnected()) {
+			var setting = 0x00;
 		    console.log("setPinMode pin:" + pin + " mode:" + mode);
+		    if('output' == mode) {
+		    	setting = 0x01;
+		    }
+		    else if('analog' == mode) {
+		    	setting = 0x02;
+		    }
+		    else if('pwm' == mode) {
+		    	setting = 0x03;
+		    }
 		    var bytearray = new Uint8Array(3);
 		    bytearray[0] = 0xF4;// PIN_MODE;
 		    bytearray[1] = pin;
-		    bytearray[2] = mode == 'output' ? 0x01 : 0x00;
+		    bytearray[2] = setting;
 		    ext.socket.send(bytearray.buffer);
 		}
   	}
