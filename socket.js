@@ -91,6 +91,10 @@ new (function() {
   	}
 
 	ext._shutdown = function() {};
+	
+	ext.reportDigital(pin) {
+		console.log('reportDigital ' + pin);
+	}
   
   	ext.setPinMode = function(pin, mode) {
 		if(ext.isConnected()) {
