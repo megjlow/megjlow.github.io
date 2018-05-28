@@ -92,7 +92,7 @@ new (function() {
 
 	ext._shutdown = function() {};
 	
-	ext.reportDigital(pin) {
+	ext.reportDigital = function(pin) {
 		console.log('reportDigital ' + pin);
 	}
   
