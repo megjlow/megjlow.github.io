@@ -80,7 +80,7 @@ new (function() {
 	      		[' ', ext.ip + ': report digital callback %m.pin %m.enableDisable', 'reportDigital', '1', 'enable'] 
 	    	],
 	    	'menus': {
-	      		'pin': ['1', '2', '3'],
+	      		'pin': ['12', '2', '3'],
 	      		'dsetting': ['on', 'off'],
 	      		'ppin': ['1', '2'],
 				'io': ['output', 'input', 'pwm', 'analog'],
