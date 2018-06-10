@@ -163,7 +163,7 @@ new (function() {
 					console.log("value " + value);
 					if(ext.messageQueue["pin-state-" + pin] != undefined) {
 						console.log("got handler");
-						ext.messageQueue["pin-state-" + pin](state);
+						ext.messageQueue["pin-state-" + pin](value);
 					}
 				}
 			}
