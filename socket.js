@@ -78,6 +78,7 @@ new (function() {
 	      		['R', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1'],
 	      		[' ', ext.ip + ': report digital callback %m.pin %m.enableDisable', 'reportDigital', '1', 'enable'],
+	      		['h', 'when alarm goes off', 'when_alarm'],
 	    	],
 	    	'menus': {
 	      		'pin': ['12', '2', '3'],
@@ -91,6 +92,17 @@ new (function() {
 	    	url: 'http://www.warwick.ac.uk/tilesfortales'
 	  	};
   	}
+  	
+  	ext.when_alarm = function() {
+       // Reset alarm_went_off if it is true, and return true
+       // otherwise, return false.
+       if (alarm_went_off === true) {
+           alarm_went_off = false;
+           return true;
+       }
+
+       return false;
+    }
 
 	ext._shutdown = function() {};
 	
