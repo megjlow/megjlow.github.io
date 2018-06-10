@@ -159,7 +159,8 @@ new (function() {
 					var pin = dv.getUint8(2);
 					var state = dv.getUint8(4);
 					console.log("state " + state >> 7);
-					console.log(ext.messageQueue["pin-state-" + pin]);
+					var value = dv.getUint8(5);
+					console.log("value " + value);
 					if(ext.messageQueue["pin-state-" + pin] != undefined) {
 						console.log("got handler");
 						ext.messageQueue["pin-state-" + pin](state);
