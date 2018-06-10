@@ -78,7 +78,7 @@ new (function() {
 	      		['R', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1'],
 	      		[' ', ext.ip + ': report digital callback %m.pin %m.enableDisable', 'reportDigital', '1', 'enable'],
-	      		['h', 'when %m.pin becomes high', 'when_alarm'],
+	      		['h', 'when pin %m.pin is', 'when_alarm'],
 	    	],
 	    	'menus': {
 	      		'pin': ['12', '2', '3'],
@@ -171,13 +171,18 @@ new (function() {
 					var pin = dv.getUint8(2);
 					var state = dv.getUint8(4);
 					console.log("state " + state >> 7);
-					var value = dv.getUint8(5);
+					var value = dv.getUint8(5); // returned array also includes value ( standard firmata doesn't )
 					console.log("value " + value);
 					if(ext.messageQueue["pin-state-" + pin] != undefined) {
 						console.log("got handler");
 						ext.messageQueue["pin-state-" + pin](value);
 					}
 				}
+			}
+			else {
+				var response = dv.getUint8(0) < 0xF0 ? (dv.getUint8(0) & 0xF0) : dv.getUint8(0);
+				console.log("response = " + response);
+				// DIGITAL_MESSAGE | (portNumber & 0xF)
 			}
 		}
 		
