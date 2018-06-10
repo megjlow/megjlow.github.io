@@ -78,7 +78,7 @@ new (function() {
 	      		['R', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1'],
 	      		[' ', ext.ip + ': report digital callback %m.pin %m.enableDisable', 'reportDigital', '1', 'enable'],
-	      		['h', 'when alarm goes off', 'when_alarm'],
+	      		['h', 'when %m.pin becomes high', 'when_alarm'],
 	    	],
 	    	'menus': {
 	      		'pin': ['12', '2', '3'],
