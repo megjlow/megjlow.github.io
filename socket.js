@@ -184,6 +184,7 @@ new (function() {
 				console.log("response = " + response);
 				var port = (dv.getUint8(0) & 0x0F);
 				console.log("port " + port);
+				var portValue = dv.getUint8(1) | (dv.getUint8(2) << 7);
 				// DIGITAL_MESSAGE | (portNumber & 0xF)
 			}
 		}
