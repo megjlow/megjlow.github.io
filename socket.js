@@ -180,11 +180,17 @@ new (function() {
 				}
 			}
 			else {
-				var response = dv.getUint8(0) < 0xF0;// ? (dv.getUint8(0) & 0xF0) : dv.getUint8(0);
-				console.log("response = " + response);
-				var port = (dv.getUint8(0) & 0x0F);
-				console.log("port " + port);
+				var operation = dv.getUint8(0) < 0xF0;
+				if(operation == 0x90) {
+					console.log("digital message");
+				}
+				else {
+					console.log("unknown");
+				}
 				var portValue = dv.getUint8(1) | (dv.getUint8(2) << 7);
+				console.log("portValue " + portValue);
+				
+
 				// DIGITAL_MESSAGE | (portNumber & 0xF)
 			}
 		}
