@@ -150,13 +150,13 @@ new (function() {
 			r = r + " " + dv.getUint8(i).toString(16);
 		}
 		
+		console.log("check message type");
 		if(dv.byteLength > 0) {
 			if(dv.getUint8(0) == 0xF0) { // start sysex
 				if(dv.getUint8(1) == 0x6E) { // pin state response
 					// 2 will be pin number, 4 will be state
 					var pin = dv.getUint8(2);
 					var state = dv.getUint8(4);
-					console.log("state " + state);
 					console.log("state " + state >> 7);
 					console.log(ext.messageQueue["pin-state-" + pin]);
 					if(ext.messageQueue["pin-state-" + pin] != undefined) {
