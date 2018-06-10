@@ -145,6 +145,7 @@ new (function() {
   
 	ext.onMessage = function(evt) {
 		var dv = new DataView(evt.data);
+		console.log("dv.byteLength " + dv.byteLength);
 		var r = "received message: ";
 		for(var i=0; i<dv.byteLength; i++) {
 			r = r + " " + dv.getUint8(i).toString(16);
