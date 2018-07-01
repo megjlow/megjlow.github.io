@@ -82,12 +82,14 @@ new (function() {
 			ext.socket = null;
 		}
 	}
-  
+	
+	ScratchExtensions.register(ext.name != null ext.name : ext.ip, descriptor, ext);
+  /*
   if(ext.name != undefined) {
 		ScratchExtensions.register(ext.name, descriptor, ext);
 	}
 	else {
 		ScratchExtensions.register(ext.ip, descriptor, ext);
 	}
-  
+  */
 })();
