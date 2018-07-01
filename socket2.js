@@ -3821,11 +3821,15 @@ Board.prototype.digitalWrite = function(pin, value) {
   }
 
   writeToTransport(this, [
-    0xF5 | port,
+    DIGITAL_MESSAGE | port,
     this.ports[port] & 0x7F,
     (this.ports[port] >> 7) & 0x7F
   ]);
 };
+
+Board.prototype.setPinValue = function(pin, value) {
+	writeToTransport(this,[0xF5, pin, value]);
+}
 
 /**
  * Asks the arduino to read digital data. Turn on reporting for this pin's port.
@@ -5490,7 +5494,8 @@ function decodeCustomFloat(input) {
 	
 	ext.setDigital = function(pin, value) {
 		if(ext.isConnected()) {
-			ext.board.digitalWrite(pin, value == 'off' ? 0 : 1);
+			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
+			//ext.board.digitalWrite(pin, value == 'off' ? 0 : 1);
 	    }
 	}
 	
