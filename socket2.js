@@ -5407,8 +5407,8 @@ function decodeCustomFloat(input) {
 			[' ', ext.name != null ? ext.name : ext.ip + ': connect', 'connect'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': disconnect', 'disconnect'],
 			['b', ext.name != null ? ext.name : ext.ip + ': isConnected', 'isConnected'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.io %m.ioMode', 'setPinMode', 1, 'output', 'digital'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
+			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.io %m.ioMode', 'setPinMode', 2, 'output', 'digital'],
+			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '2', 'off'],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
