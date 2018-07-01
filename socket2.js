@@ -67,7 +67,7 @@ new (function() {
 			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
 		],
 		'menus': {
-			'pin': ['1', '2', '3'],
+			'pin': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
 			'dsetting': ['on', 'off'],
 			'ppin': ['1', '2'],
 			'io': ['output', 'input', 'pwm', 'analog'],
