@@ -1,6 +1,4 @@
 // firmata.js
-	
-	"use strict";
 
 // Built-in Dependencies
 //const Emitter = require("events");
