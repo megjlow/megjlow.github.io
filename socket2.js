@@ -1110,8 +1110,8 @@ Board.prototype.digitalWrite = function(pin, value) {
  */
 
 Board.prototype.digitalRead = function(pin, callback) {
-  this.reportDigitalPin(pin, 1);
-  this.addListener("digital-read-" + pin, callback);
+	this.addListener("digital-read-" + pin, callback);
+	this.reportDigitalPin(pin, 1);
 };
 
 /**
