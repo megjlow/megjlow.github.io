@@ -60,15 +60,18 @@ new (function() {
 			[' ', ext.name != null ? ext.name : ext.ip + ': connect', 'connect'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': disconnect', 'disconnect'],
 			['b', ext.name != null ? ext.name : ext.ip + ': isConnected', 'isConnected'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
+			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.io %m.ioMode', 'setPinMode', 0, 'output', 'digital'],
+			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
+			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
+			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
+			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
 		],
 		'menus': {
 			'pin': ['1', '2', '3'],
 			'dsetting': ['on', 'off'],
-			'ppin': ['1', '2']
+			'ppin': ['1', '2'],
+			'io': ['output', 'input', 'pwm', 'analog'],
+			'ioMode': ['digital', 'pwm'],
 		},
 		url: 'http://www.warwick.ac.uk/tilesfortales'
 	};
@@ -119,6 +122,12 @@ new (function() {
 		if(ext.socket != null) {
 			ext.socket.close();
 			ext.socket = null;
+		}
+	}
+	
+	ext.setPinMode = function(pin, mode) {
+		if(ext.isConnected()) {
+			board.setPinMode(pin, mode);
 		}
 	}
 	
