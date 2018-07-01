@@ -3292,7 +3292,7 @@ function Board(port, options, callback) {
 		//	ext.socket.onclose = function(evt) {ext.onClose(evt)};
 
   this.transport.addEventListener("close", function(e) {
-    this.emit('disconnect');
+    board.emit('disconnect');
 	// set transport to null?
 	return;
   });
@@ -5414,7 +5414,7 @@ function decodeCustomFloat(input) {
 			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
 		],
 		'menus': {
-			'pin': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+			'pin': ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
 			'dsetting': ['on', 'off'],
 			'ppin': ['1', '2'],
 			'io': ['output', 'input', 'pwm', 'analog'],
