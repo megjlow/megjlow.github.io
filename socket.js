@@ -100,7 +100,6 @@ new (function() {
 			alarm_went_off = false;
 			return true;
 		}
-
 		return false;
 	}
 
