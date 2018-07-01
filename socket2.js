@@ -127,7 +127,7 @@ new (function() {
 	
 	ext.setPinMode = function(pin, mode) {
 		if(ext.isConnected()) {
-			board.setPinMode(pin, mode);
+			ext.board.setPinMode(pin, mode);
 		}
 	}
 	
