@@ -5469,7 +5469,7 @@ function decodeCustomFloat(input) {
 		}
 	}
 	
-	ext.setDigital = function(pin, setting) {
+	ext.setDigital = function(pin, value) {
 		if(ext.isConnected()) {
 			board.digitalWrite(pin, value == off ? 0 : 1);
 	    }
