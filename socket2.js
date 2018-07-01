@@ -1,6 +1,6 @@
 new (function() {
 	var ext = this;
-	var ext.socket = null;
+	ext.socket = null;
   
   var getUrlParameter = function getUrlParameter(sParam) {
 	    var sPageURL = decodeURIComponent(document.currentScript.src.split("?")[1]),
