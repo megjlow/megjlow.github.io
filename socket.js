@@ -203,15 +203,14 @@ new (function() {
 							pin: pinNumber,
 							value: pin.value,
       					});
+					}
 				}
-		
-
 			}
+		
+			// 6e PIN_STATE_RESPONSE
+		
+			console.log(r);
 		}
-		
-		// 6e PIN_STATE_RESPONSE
-		
-		console.log(r);
 	}
   
 	ext.doSend = function(message) {
