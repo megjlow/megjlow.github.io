@@ -5506,7 +5506,7 @@ function decodeCustomFloat(input) {
 			if("output" == mode) {
 				bMode = ext.board.MODES.OUTPUT;
 			}
-			ext.board.setPinMode(pin, bMode);
+			ext.board.pinMode(pin, bMode);
 		}
 	}
 	
