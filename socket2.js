@@ -5500,7 +5500,7 @@ function decodeCustomFloat(input) {
 	
 	ext.getDigital = function(pin, callback) {
   		if(ext.isConnected()) {
-  			ext.board.digitalRead(pin, ext.getDigitalCallback);
+  			ext.board.digitalRead(pin, callback);
   		}
   	}
 	
