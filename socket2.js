@@ -127,7 +127,11 @@ new (function() {
 	
 	ext.setPinMode = function(pin, mode) {
 		if(ext.isConnected()) {
-			ext.board.setPinMode(pin, mode);
+			var bMode = ext.board.MODES.INPUT; 
+			if("output" == mode) {
+				bMode = ext.board.MODES.OUTPUT;
+			}
+			ext.board.setPinMode(pin, bMode);
 		}
 	}
 	
