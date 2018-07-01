@@ -5461,11 +5461,29 @@ function decodeCustomFloat(input) {
 	
 	ext.setPinMode = function(pin, mode) {
 		if(ext.isConnected()) {
+			var setting = 0x00;
+		    console.log("setPinMode pin:" + pin + " mode:" + mode);
+		    if('output' == mode) {
+		    	setting = 0x01;
+		    }
+		    else if('analog' == mode) {
+		    	setting = 0x02;
+		    }
+		    else if('pwm' == mode) {
+		    	setting = 0x03;
+		    }
+		    var bytearray = new Uint8Array(3);
+		    bytearray[0] = 0xF4;// PIN_MODE;
+		    bytearray[1] = pin;
+		    bytearray[2] = setting;
+		    ext.socket.send(bytearray.buffer);
+		    /*
 			var bMode = ext.board.MODES.INPUT; 
 			if("output" == mode) {
 				bMode = ext.board.MODES.OUTPUT;
 			}
 			ext.board.pinMode(pin, bMode);
+			*/
 		}
 	}
 	
