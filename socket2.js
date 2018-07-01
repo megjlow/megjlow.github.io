@@ -5435,8 +5435,8 @@ function decodeCustomFloat(input) {
 			[' ', ext.name != null ? ext.name : ext.ip + ': connect', 'connect'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': disconnect', 'disconnect'],
 			['b', ext.name != null ? ext.name : ext.ip + ': isConnected', 'isConnected'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.io %m.ioMode', 'setPinMode', 0, 'output', 'digital'],
-			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
+			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.io %m.ioMode', 'setPinMode', 1, 'output', 'digital'],
+			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
@@ -5461,19 +5461,6 @@ function decodeCustomFloat(input) {
 			ext.socket = null;
 			ext.connect();
 		}
-		/*
-		if(ext.socket == null) {
-			ext.socket = new WebSocket("ws://" + ext.ip, 'firmata');
-			ext.socket.binaryType = "arraybuffer";
-			ext.socket.onopen = function(evt) {ext.onOpen(evt)};
-			ext.socket.onmessage = function(evt) {ext.onMessage(evt)};
-			ext.socket.onclose = function(evt) {ext.onClose(evt)};
-		}
-		else if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
-			ext.socket = null;
-			ext.connect();
-		}
-		*/
 		// if socket is in open or connecting state we're not going to do anything
 	}
 	
@@ -5508,6 +5495,12 @@ function decodeCustomFloat(input) {
 			}
 			ext.board.pinMode(pin, bMode);
 		}
+	}
+	
+	ext.setDigital = function(pin, setting) {
+		if(ext.isConnected()) {
+			board.digitalWrite(pin, value == off ? 0 : 1);
+	    }
 	}
 	
 	ScratchExtensions.register(ext.name != null ? ext.name : ext.ip, descriptor, ext);
