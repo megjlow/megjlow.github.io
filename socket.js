@@ -78,7 +78,7 @@ new (function() {
 	      		['R', ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 	      		[' ', ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1'],
 	      		[' ', ext.ip + ': report digital callback %m.pin %m.enableDisable', 'reportDigital', '1', 'enable'],
-	      		['h', 'when pin %m.pin is', 'when_alarm'],
+	      		['h', 'when pin %m.pin is %m.dsetting', 'when_alarm'],
 	    	],
 	    	'menus': {
 	      		'pin': ['12', '2', '3'],
@@ -190,8 +190,31 @@ new (function() {
 				var portValue = dv.getUint8(1) | (dv.getUint8(2) << 7);
 				console.log("portValue " + portValue);
 				
+				
+				for (var i = 0; i < 8; i++) {
+    var pinNumber = 8 * port + i;
+    var pin = board.pins[pinNumber];
+    var bit = 1 << i;
 
-				// DIGITAL_MESSAGE | (portNumber & 0xF)
+    if (pin && (pin.mode === board.MODES.INPUT || pin.mode === board.MODES.PULLUP)) {
+      var pinValue = (portValue >> (i & 0x07)) & 0x01;
+
+/*
+      if (pin.value) {
+        board.ports[port] |= bit;
+      } else {
+        board.ports[port] &= ~bit;
+      }
+*/
+
+      board.emit("digital-read-" + pinNumber, pin.value);
+      board.emit("digital-read", {
+        pin: pinNumber,
+        value: pin.value,
+      });
+}
+		
+
 			}
 		}
 		
