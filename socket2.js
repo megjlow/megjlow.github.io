@@ -37,9 +37,9 @@ new (function() {
   var descriptor = {
     	blocks: [
       		[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
-      		[' ', ext.name + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
-      		[' ', ext.name + ': digital pin %m.pin get', 'getDigital', '1'],
-      		[' ', ext.name + ': pwm pin %m.ppin get', 'getPwm', '1']
+      		[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
+      		[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
+      		[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
     	],
     	'menus': {
       		'pin': ['1', '2', '3'],
@@ -47,7 +47,22 @@ new (function() {
       		'ppin': ['1', '2']
      	},
     	url: 'http://www.warwick.ac.uk/tilesfortales'
-  	};
+  };
+	
+ext.isConnected = function() {
+		var retval = false;
+		if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
+			retval = true;
+		}
+		return retval;
+	}
+  
+	ext.disconnect = function() {
+		if(ext.socket != null) {
+			ext.socket.close();
+			ext.socket = null;
+		}
+	}
   
   if(ext.name != undefined) {
 		ScratchExtensions.register(ext.name, descriptor, ext);
