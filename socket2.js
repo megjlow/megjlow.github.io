@@ -139,7 +139,7 @@ MIDI_RESPONSE[DIGITAL_MESSAGE] = function(board) {
         board.ports[port] &= ~bit;
       }
 
-      board.emit("digital-read-" + pinNumber);
+      board.emit("digital-read-" + pinNumber, pin.value);
       board.emit("digital-read", {
         pin: pinNumber,
         value: pin.value,
