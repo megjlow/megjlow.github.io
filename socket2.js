@@ -83,7 +83,7 @@ new (function() {
 		}
 	}
 	
-	ScratchExtensions.register(ext.name != null ext.name : ext.ip, descriptor, ext);
+	ScratchExtensions.register(ext.name != null ? ext.name : ext.ip, descriptor, ext);
   /*
   if(ext.name != undefined) {
 		ScratchExtensions.register(ext.name, descriptor, ext);
