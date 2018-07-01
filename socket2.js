@@ -3821,7 +3821,7 @@ Board.prototype.digitalWrite = function(pin, value) {
   }
 
   writeToTransport(this, [
-    DIGITAL_MESSAGE | port,
+    0xF5 | port,
     this.ports[port] & 0x7F,
     (this.ports[port] >> 7) & 0x7F
   ]);
