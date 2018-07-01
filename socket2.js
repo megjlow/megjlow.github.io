@@ -36,108 +36,6 @@ new (function() {
 	console.log('ip ' + ext.ip);
 	console.log('using url ' + ext.url);
 	
-	// websocket event handlers
-	
-	ext.doSend = function(message) {
-		console.log("SENT: " + message);
-		ext.socket.send(message);
-	}
-  
-	ext.onOpen = function(evt) {
-		console.log("Connected");
-		//ext.doSend("WebSocket rocks");
-	}
-  
-	ext.onClose = function(evt) {
-		console.log("onClose");
-		ext.socket = null;
-	}
-	
-	// end websocket event handlers 
-  
-	var descriptor = {
-		blocks: [
-			[' ', ext.name != null ? ext.name : ext.ip + ': connect', 'connect'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': disconnect', 'disconnect'],
-			['b', ext.name != null ? ext.name : ext.ip + ': isConnected', 'isConnected'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.io %m.ioMode', 'setPinMode', 0, 'output', 'digital'],
-			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
-			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
-			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
-			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
-		],
-		'menus': {
-			'pin': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-			'dsetting': ['on', 'off'],
-			'ppin': ['1', '2'],
-			'io': ['output', 'input', 'pwm', 'analog'],
-			'ioMode': ['digital', 'pwm'],
-		},
-		url: 'http://www.warwick.ac.uk/tilesfortales'
-	};
-	
-	ext.connect = function() {
-		if(ext.socket == null) {
-			ext.socket = new WebSocket("ws://" + ext.ip, "firmata");
-			ext.socket.binaryType = 'arraybuffer';
-			ext.board = new Board(socket);
-		}
-		else if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
-			ext.socket = null;
-			ext.connect();
-		}
-		/*
-		if(ext.socket == null) {
-			ext.socket = new WebSocket("ws://" + ext.ip, 'firmata');
-			ext.socket.binaryType = "arraybuffer";
-			ext.socket.onopen = function(evt) {ext.onOpen(evt)};
-			ext.socket.onmessage = function(evt) {ext.onMessage(evt)};
-			ext.socket.onclose = function(evt) {ext.onClose(evt)};
-		}
-		else if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
-			ext.socket = null;
-			ext.connect();
-		}
-		*/
-		// if socket is in open or connecting state we're not going to do anything
-	}
-	
-	ext._getStatus = function() {
-		var retval = {status: 1, msg: 'Not Connected'};
-		if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
-			retval = {status: 2, msg: 'Device connected'};
-		}
-		return retval;
-	}
-	
-	ext.isConnected = function() {
-		var retval = false;
-		if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
-			retval = true;
-		}
-		return retval;
-	}
-  
-	ext.disconnect = function() {
-		if(ext.socket != null) {
-			ext.socket.close();
-			ext.socket = null;
-		}
-	}
-	
-	ext.setPinMode = function(pin, mode) {
-		if(ext.isConnected()) {
-			var bMode = ext.board.MODES.INPUT; 
-			if("output" == mode) {
-				bMode = ext.board.MODES.OUTPUT;
-			}
-			ext.board.setPinMode(pin, bMode);
-		}
-	}
-	
-	ScratchExtensions.register(ext.name != null ? ext.name : ext.ip, descriptor, ext);
-	
-	
 	// firmata.js
 	
 	"use strict";
@@ -2826,5 +2724,107 @@ function decodeCustomFloat(input) {
 	
 	
 	//end firmata.js
+	
+	// websocket event handlers
+	
+	ext.doSend = function(message) {
+		console.log("SENT: " + message);
+		ext.socket.send(message);
+	}
+  
+	ext.onOpen = function(evt) {
+		console.log("Connected");
+		//ext.doSend("WebSocket rocks");
+	}
+  
+	ext.onClose = function(evt) {
+		console.log("onClose");
+		ext.socket = null;
+	}
+	
+	// end websocket event handlers 
+  
+	var descriptor = {
+		blocks: [
+			[' ', ext.name != null ? ext.name : ext.ip + ': connect', 'connect'],
+			[' ', ext.name != null ? ext.name : ext.ip + ': disconnect', 'disconnect'],
+			['b', ext.name != null ? ext.name : ext.ip + ': isConnected', 'isConnected'],
+			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.io %m.ioMode', 'setPinMode', 0, 'output', 'digital'],
+			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '1', 'off'],
+			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
+			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
+			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
+		],
+		'menus': {
+			'pin': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+			'dsetting': ['on', 'off'],
+			'ppin': ['1', '2'],
+			'io': ['output', 'input', 'pwm', 'analog'],
+			'ioMode': ['digital', 'pwm'],
+		},
+		url: 'http://www.warwick.ac.uk/tilesfortales'
+	};
+	
+	ext.connect = function() {
+		if(ext.socket == null) {
+			ext.socket = new WebSocket("ws://" + ext.ip, "firmata");
+			ext.socket.binaryType = 'arraybuffer';
+			ext.board = new Board(socket);
+		}
+		else if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
+			ext.socket = null;
+			ext.connect();
+		}
+		/*
+		if(ext.socket == null) {
+			ext.socket = new WebSocket("ws://" + ext.ip, 'firmata');
+			ext.socket.binaryType = "arraybuffer";
+			ext.socket.onopen = function(evt) {ext.onOpen(evt)};
+			ext.socket.onmessage = function(evt) {ext.onMessage(evt)};
+			ext.socket.onclose = function(evt) {ext.onClose(evt)};
+		}
+		else if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
+			ext.socket = null;
+			ext.connect();
+		}
+		*/
+		// if socket is in open or connecting state we're not going to do anything
+	}
+	
+	ext._getStatus = function() {
+		var retval = {status: 1, msg: 'Not Connected'};
+		if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
+			retval = {status: 2, msg: 'Device connected'};
+		}
+		return retval;
+	}
+	
+	ext.isConnected = function() {
+		var retval = false;
+		if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
+			retval = true;
+		}
+		return retval;
+	}
+  
+	ext.disconnect = function() {
+		if(ext.socket != null) {
+			ext.socket.close();
+			ext.socket = null;
+		}
+	}
+	
+	ext.setPinMode = function(pin, mode) {
+		if(ext.isConnected()) {
+			var bMode = ext.board.MODES.INPUT; 
+			if("output" == mode) {
+				bMode = ext.board.MODES.OUTPUT;
+			}
+			ext.board.setPinMode(pin, bMode);
+		}
+	}
+	
+	ScratchExtensions.register(ext.name != null ? ext.name : ext.ip, descriptor, ext);
+	
 
 })();
