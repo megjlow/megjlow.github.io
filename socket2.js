@@ -3837,13 +3837,11 @@ Board.prototype.setPinValue = function(pin, value) {
  * @param {number} pin The pin to read data from
  * @param {function} callback The function to call when data has been received
  */
-
-/*
+ 
 Board.prototype.digitalRead = function(pin, callback) {
-  this.reportDigitalPin(pin, 1);
   this.addListener("digital-read-" + pin, callback);
+  this.reportDigitalPin(pin, 1);
 };
-*/
 
 /**
  * Asks the arduino to tell us its capabilities
