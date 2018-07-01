@@ -191,27 +191,19 @@ new (function() {
 				
 				
 				for (var i = 0; i < 8; i++) {
-    var pinNumber = 8 * port + i;
-    var pin = board.pins[pinNumber];
-    var bit = 1 << i;
+    				var pinNumber = 8 * port + i;
+    				var pin = board.pins[pinNumber];
+    				var bit = 1 << i;
 
-    if (pin && (pin.mode === board.MODES.INPUT || pin.mode === board.MODES.PULLUP)) {
-      var pinValue = (portValue >> (i & 0x07)) & 0x01;
+    				if (pin && (pin.mode === board.MODES.INPUT || pin.mode === board.MODES.PULLUP)) {
+      					var pinValue = (portValue >> (i & 0x07)) & 0x01;
 
-/*
-      if (pin.value) {
-        board.ports[port] |= bit;
-      } else {
-        board.ports[port] &= ~bit;
-      }
-*/
-
-      board.emit("digital-read-" + pinNumber, pin.value);
-      board.emit("digital-read", {
-        pin: pinNumber,
-        value: pin.value,
-      });
-}
+						board.emit("digital-read-" + pinNumber, pin.value);
+						board.emit("digital-read", {
+							pin: pinNumber,
+							value: pin.value,
+      					});
+				}
 		
 
 			}
