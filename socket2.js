@@ -595,42 +595,14 @@ function Board(port, options, callback) {
 		//	ext.socket.onclose = function(evt) {ext.onClose(evt)};
 
   this.transport.addEventListener("close", function(e) {
-    this.emit('disconnect');
+    board.emit('disconnect');
 	// set transport to null?
 	return;
   });
-  /*
-  this.transport.on("close", function(event) {
-
-    // https://github.com/node-serialport/node-serialport/blob/5.0.0/UPGRADE_GUIDE.md#opening-and-closing
-    if (event && event.disconnect && event.disconnected) {
-      this.emit("disconnect");
-      return;
-    }
-
-    this.emit("close");
-  }.bind(this));
-	*/
 
   this.transport.addEventListener('open', function(e) {
 	  console.log("Connected");
   });
-  /*
-  this.transport.on("open", function(event) {
-    this.emit("open", event);
-    // Legacy
-    this.emit("connect", event);
-  }.bind(this));
-	*/
-  /*
-  this.transport.on("error", function(error) {
-    if (!this.isReady && typeof callback === "function") {
-      callback(error);
-    } else {
-      this.emit("error", error);
-    }
-  }.bind(this));
-	*/
   this.transport.addEventListener('error', function(e) {
 	  console.log("websocket error");
   });
