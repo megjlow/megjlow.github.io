@@ -5417,9 +5417,7 @@ function decodeCustomFloat(input) {
 			['r', ext.name != null ? ext.name : ext.ip + ': pin %m.pin get mode', 'getPinMode', '2'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %n', 'setPwm', '2', 512],
 			['r', ext.name != null ? ext.name : ext.ip + ': pin %m.pin get pwm setting', 'getPwm', '2'],
-			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
-			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
-			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
+			['h', 'when pin %m.pin is %m.dsetting', 'when_alarm'],
 		],
 		'menus': {
 			'pin': ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
@@ -5429,6 +5427,10 @@ function decodeCustomFloat(input) {
 		},
 		url: 'http://www.warwick.ac.uk/tilesfortales'
 	};
+	
+	ext.when_alarm = function() {
+		console.log("alarm alarm alarm");
+	}
 	
 	ext.connect = function() {
 		if(ext.socket == null) {
