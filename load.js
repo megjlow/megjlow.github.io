@@ -24,6 +24,6 @@ new (function() {
   	
   	ScratchExtensions.register("extensionloader", descriptor, ext);
     
-    ext.loadBlock("https://megjlow.github.io/socket2.js?ip=192.168.2.107");
+    ext.loadBlock("https://megjlow.github.io/socket2.js?ip=192.168.2.102");
 	
 });
