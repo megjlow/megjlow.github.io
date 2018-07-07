@@ -5531,7 +5531,7 @@ function decodeCustomFloat(input) {
   	
   	ext.setPwm = function(pin, value) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.PWM) {
-			ext.board.pwmWrite(pin, value);
+			ext.board.pwmWrite(pin, value == 'enable' ? 1 : 0);
 	    }
   	}
   	
