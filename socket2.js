@@ -5486,10 +5486,13 @@ function decodeCustomFloat(input) {
 				retval = "input";
 			}
 			else if(ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
-				retval = "output":
+				retval = "output";
 			}
 			else if(ext.board.pins[pin].mode == ext.board.MODES.PWM) {
 				retval = "pwm";
+			}
+			else if(ext.board.pins[pin].mode == ext.board.MODES.ANALOG) {
+				retval = "analog";
 			}
 			return retval;
 		}
