@@ -5413,7 +5413,8 @@ function decodeCustomFloat(input) {
 			['b', ext.name != null ? ext.name : ext.ip + ': isConnected', 'isConnected'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.io %m.ioMode', 'setPinMode', 2, 'output', 'digital'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '2', 'off'],
-			['R', ext.ip + ': digital pin %m.pin get', 'getDigital', '2'],
+			['R', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '2'],
+			['R', ext.name != null ? ext.name : ext.ip + ': pin %m.pin get mode', getPinMode, '2'],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
@@ -5472,6 +5473,10 @@ function decodeCustomFloat(input) {
 			}
 			ext.board.pinMode(pin, bMode);
 		}
+	}
+	
+	ext.getPinMode = function(pin) {
+		return this.pins[pin].mode;
 	}
 	
 	ext.setDigital = function(pin, value) {
