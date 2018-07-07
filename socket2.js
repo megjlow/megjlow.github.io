@@ -5525,7 +5525,7 @@ function decodeCustomFloat(input) {
   	
   	ext.reportDigital = function(pin, setting) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
-  			ext.board.reportDigitalPin(pin, setting);
+  			ext.board.reportDigitalPin(pin, setting == 'enable' ? 1 : 0);
   		}
   	}
   	
