@@ -5412,6 +5412,7 @@ function decodeCustomFloat(input) {
 			[' ', ext.name != null ? ext.name : ext.ip + ': disconnect', 'disconnect'],
 			['b', ext.name != null ? ext.name : ext.ip + ': isConnected', 'isConnected'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
+			[' ', ext.name != null ? ext.name : ext.ip + ': report digital callback %m.pin %m.enableDisable', 'reportDigital', '2', 'enable'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '2', 'off'],
 			['R', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '2'],
 			['r', ext.name != null ? ext.name : ext.ip + ': pin %m.pin get mode', 'getPinMode', '2'],
@@ -5519,6 +5520,12 @@ function decodeCustomFloat(input) {
 	ext.getDigital = function(pin, callback) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
   			ext.board.digitalRead(pin, callback);
+  		}
+  	}
+  	
+  	ext.reportDigital = function(pin, setting) {
+  		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
+  			ext.board.reportDigitalPin(pin, setting);
   		}
   	}
   	
