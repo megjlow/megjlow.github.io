@@ -5425,7 +5425,7 @@ function decodeCustomFloat(input) {
 			'pin': ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
 			'dsetting': ['on', 'off'],
 			'ppin': ['1', '2'],
-			'ioMode': ['output', 'input', 'pwm', 'analog'],
+			'ioMode': ['output', 'input', 'pwm'],
 		},
 		url: 'http://www.warwick.ac.uk/tilesfortales'
 	};
@@ -5491,9 +5491,9 @@ function decodeCustomFloat(input) {
 			else if(ext.board.pins[pin].mode == ext.board.MODES.PWM) {
 				retval = "pwm";
 			}
-			else if(ext.board.pins[pin].mode == ext.board.MODES.ANALOG) {
-				retval = "analog";
-			}
+			//else if(ext.board.pins[pin].mode == ext.board.MODES.ANALOG) {
+			//	retval = "analog";
+			//}
 			return retval;
 		}
 	}
