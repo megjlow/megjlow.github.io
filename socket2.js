@@ -5485,7 +5485,7 @@ function decodeCustomFloat(input) {
 	}
 	
 	ext.setDigital = function(pin, value) {
-		if(ext.isConnected() && this.pins[pin].mode == ext.board.MODES.OUTPUT) {
+		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
 			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
 	    }
 	}
@@ -5495,13 +5495,13 @@ function decodeCustomFloat(input) {
 	}
 	
 	ext.getDigital = function(pin, callback) {
-  		if(ext.isConnected() && this.pins[pin].mode == ext.board.MODES.INPUT) {
+  		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
   			ext.board.digitalRead(pin, callback);
   		}
   	}
   	
   	ext.setPwm = function(pin, value) {
-  		if(ext.isConnected() && this.pins[pin].mode == ext.board.MODES.OUTPUT) {
+  		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
 			ext.board.setPinValue(pin, 512);
 	    }
   	}
