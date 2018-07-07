@@ -5464,7 +5464,6 @@ function decodeCustomFloat(input) {
 		}
 	}
 	
-	
 	ext.setPinMode = function(pin, mode) {
 		if(ext.isConnected()) {
 			var bMode = ext.board.MODES.INPUT; 
