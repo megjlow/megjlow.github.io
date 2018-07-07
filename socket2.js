@@ -5415,6 +5415,7 @@ function decodeCustomFloat(input) {
 			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '2', 'off'],
 			['R', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '2'],
 			['r', ext.name != null ? ext.name : ext.ip + ': pin %m.pin get mode', 'getPinMode', '2'],
+			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %n', 'setPwm', '2', 512],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin setting %n', 'setPwm', '1', '100'],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '1'],
 			//[' ', ext.name != null ? ext.name : ext.ip + ': pwm pin %m.ppin get', 'getPwm', '1']
@@ -5484,7 +5485,7 @@ function decodeCustomFloat(input) {
 	}
 	
 	ext.setDigital = function(pin, value) {
-		if(ext.isConnected()) {
+		if(ext.isConnected() && this.pins[pin].mode == ext.board.MODES.OUTPUT) {
 			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
 	    }
 	}
@@ -5498,6 +5499,13 @@ function decodeCustomFloat(input) {
   			ext.board.digitalRead(pin, callback);
   		}
   	}
+  	
+  	ext.setPwm = function(pin, value) {
+  		if(ext.isConnected() && this.pins[pin].mode == ext.board.MODES.OUTPUT) {
+			ext.board.setPinValue(pin, 512);
+	    }
+  	}
+  	
 	
 	ScratchExtensions.register(ext.name != null ? ext.name : ext.ip, descriptor, ext);
 	
