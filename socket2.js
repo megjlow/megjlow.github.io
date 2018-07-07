@@ -5411,7 +5411,7 @@ function decodeCustomFloat(input) {
 			[' ', ext.name != null ? ext.name : ext.ip + ': connect', 'connect'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': disconnect', 'disconnect'],
 			['b', ext.name != null ? ext.name : ext.ip + ': isConnected', 'isConnected'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.io', 'setPinMode', 2, 'output'],
+			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '2', 'off'],
 			['R', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '2'],
 			['R', ext.name != null ? ext.name : ext.ip + ': pin %m.pin get mode', getPinMode, '2'],
@@ -5423,8 +5423,7 @@ function decodeCustomFloat(input) {
 			'pin': ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
 			'dsetting': ['on', 'off'],
 			'ppin': ['1', '2'],
-			'io': ['output', 'input', 'pwm', 'analog'],
-			'ioMode': ['digital', 'pwm'],
+			'ioMode': ['output', 'input', 'pwm', 'analog'],
 		},
 		url: 'http://www.warwick.ac.uk/tilesfortales'
 	};
