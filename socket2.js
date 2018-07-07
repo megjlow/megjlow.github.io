@@ -5429,8 +5429,13 @@ function decodeCustomFloat(input) {
 	};
 	
 	ext.when_alarm = function(pin, setting) {
-		console.log(pin);
-		console.log(setting);	
+		var retval = false;
+		if(ext.isConnected()) {
+			retval = ext.board.pins[pin].value == setting == "on" ? 1 : 0;
+			console.log(pin);
+			console.log(setting);
+		}
+		return retval;
 	}
 	
 	ext.connect = function() {
