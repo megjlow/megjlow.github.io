@@ -5478,7 +5478,9 @@ function decodeCustomFloat(input) {
 	}
 	
 	ext.getPinMode = function(pin) {
-		return ext.board.pins[pin].mode;
+		if(ext.isConnected()) {
+			return ext.board.pins[pin].mode;
+		}
 	}
 	
 	ext.setDigital = function(pin, value) {
