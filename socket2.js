@@ -5428,8 +5428,9 @@ function decodeCustomFloat(input) {
 		url: 'http://www.warwick.ac.uk/tilesfortales'
 	};
 	
-	ext.when_alarm = function() {
-		console.log("alarm alarm alarm");
+	ext.when_alarm = function(pin, setting) {
+		console.log(pin);
+		console.log(setting);	
 	}
 	
 	ext.connect = function() {
