@@ -17,15 +17,16 @@ new (function() {
     
     ext.loadExtension = function(name) {
     	if(name == 'ALL') {
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=SUN');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=CLOUD');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=MOON');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=CASTLE');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=TREE');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=DESERT');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=FISH');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=CAT');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=LADYBIRD');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=one');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=two');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=three');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=four');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=five');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=six');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=seven');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=eight');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=nine');
+		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=ten');
     	}
     	else {
     		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name='+ name);
