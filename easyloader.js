@@ -17,15 +17,16 @@ new (function() {
     
     ext.loadExtension = function(name) {
     	if(name == 'ALL') {
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=SUN');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=CLOUD');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=MOON');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=CASTLE');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=TREE');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=DESERT');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=FISH');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=CAT');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name=LADYBIRD');
+    		ScratchExtensions.loadExternalJS('https://megjlow.github.io/socket2.js?ip=192.168.10.201');
+    		ScratchExtensions.loadExternalJS('https://megjlow.github.io/socket2.js?ip=192.168.10.202');
+    		ScratchExtensions.loadExternalJS('https://megjlow.github.io/socket2.js?ip=192.168.10.203');
+    		ScratchExtensions.loadExternalJS('https://megjlow.github.io/socket2.js?ip=192.168.10.204');
+    		ScratchExtensions.loadExternalJS('https://megjlow.github.io/socket2.js?ip=192.168.10.205');
+    		ScratchExtensions.loadExternalJS('https://megjlow.github.io/socket2.js?ip=192.168.10.206');
+    		ScratchExtensions.loadExternalJS('https://megjlow.github.io/socket2.js?ip=192.168.10.207');
+    		ScratchExtensions.loadExternalJS('https://megjlow.github.io/socket2.js?ip=192.168.10.208');
+    		ScratchExtensions.loadExternalJS('https://megjlow.github.io/socket2.js?ip=192.168.10.209');
+		ScratchExtensions.loadExternalJS('https://megjlow.github.io/socket2.js?ip=192.168.10.210');
     	}
     	else {
     		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name='+ name);
