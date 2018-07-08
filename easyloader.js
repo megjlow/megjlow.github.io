@@ -17,16 +17,16 @@ new (function() {
     
     ext.loadExtension = function(name) {
     	if(name == 'ALL') {
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=one');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=two');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=three');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=four');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=five');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=six');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=seven');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=eight');
-    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=nine');
-		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?name=ten');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?ip=192.168.10.201');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?ip=192.168.10.202');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?ip=192.168.10.203');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?ip=192.168.10.204');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?ip=192.168.10.205');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?ip=192.168.10.206');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?ip=192.168.10.207');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?ip=192.168.10.208');
+    		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?ip=192.168.10.209');
+		ScratchExtensions.loadExternalJS('http://megjlow.github.io/socket2.js?ip=192.168.10.210');
     	}
     	else {
     		ScratchExtensions.loadExternalJS('http://megjlow.github.io/extension2.js?name='+ name);
