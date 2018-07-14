@@ -2747,20 +2747,22 @@ function decodeCustomFloat(input) {
 		ext.socket = null;
 	}
 	
-	// end websocket event handlers 
+	// end websocket event handlers
+	
+	ext.sip = ext.ip.split(".")[3];
   
 	var descriptor = {
 		blocks: [
-			[' ', ext.name != null ? ext.name : ext.ip.split(".")[3] + ': connect', 'connect'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': disconnect', 'disconnect'],
-			['b', ext.name != null ? ext.name : ext.ip + ': isConnected', 'isConnected'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': report digital callback %m.pin %m.enableDisable', 'reportDigital', '2', 'enable'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '2', 'off'],
-			['R', ext.name != null ? ext.name : ext.ip + ': digital pin %m.pin get', 'getDigital', '2'],
-			['r', ext.name != null ? ext.name : ext.ip + ': pin %m.pin get mode', 'getPinMode', '2'],
-			[' ', ext.name != null ? ext.name : ext.ip + ': %m.pin %n %', 'setPwm', '2', 100],
-			['r', ext.name != null ? ext.name : ext.ip + ': pin %m.pin get pwm setting', 'getPwm', '2'],
+			[' ', ext.name != null ? ext.name : ext.sip + ': connect', 'connect'],
+			[' ', ext.name != null ? ext.name : ext.sip + ': disconnect', 'disconnect'],
+			['b', ext.name != null ? ext.name : ext.sip + ': isConnected', 'isConnected'],
+			[' ', ext.name != null ? ext.name : ext.sip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
+			[' ', ext.name != null ? ext.name : ext.sip + ': report digital callback %m.pin %m.enableDisable', 'reportDigital', '2', 'enable'],
+			[' ', ext.name != null ? ext.name : ext.sip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '2', 'off'],
+			['R', ext.name != null ? ext.name : ext.sip + ': digital pin %m.pin get', 'getDigital', '2'],
+			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin get mode', 'getPinMode', '2'],
+			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin %n %', 'setPwm', '2', 100],
+			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin get pwm', 'getPwm', '2'],
 			['h', 'when pin %m.pin is %m.dsetting', 'when_alarm'],
 		],
 		'menus': {
