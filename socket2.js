@@ -988,14 +988,10 @@ Board.prototype.emit = function(name, evt) {
  */
 function writeToTransport(board, data) {
   board.pending++;
-  board.transport.send(new Uint8Array(data));
-  board.pending--;
-  /*
   board.transport.send(new Uint8Array(data), function() {
     board.pending--;
     console.log("sent");
   });
-  */
 }
 
 /**
