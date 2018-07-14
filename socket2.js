@@ -990,6 +990,7 @@ function writeToTransport(board, data) {
   board.pending++;
   board.transport.send(new Uint8Array(data), function() {
     board.pending--;
+    console.log("sent");
   });
 }
 
