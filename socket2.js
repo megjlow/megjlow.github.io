@@ -988,8 +988,7 @@ Board.prototype.emit = function(name, evt) {
  */
 function writeToTransport(board, data) {
 	var d = new Uint8Array(data);
-  board.transport.send(d);
-  console.log("sent");
+	board.transport.send(d);
 }
 
 /**
@@ -2757,11 +2756,11 @@ function decodeCustomFloat(input) {
 			[' ', ext.name != null ? ext.name : ext.sip + ': disconnect', 'disconnect'],
 			['b', ext.name != null ? ext.name : ext.sip + ': isConnected', 'isConnected'],
 			[' ', ext.name != null ? ext.name : ext.sip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': report digital callback %m.pin %m.enableDisable', 'reportDigital', '2', 'enable'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': digital pin %m.pin setting %m.dsetting', 'setDigital', '2', 'off'],
-			['R', ext.name != null ? ext.name : ext.sip + ': digital pin %m.pin get', 'getDigital', '2'],
+			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin reporting %m.enableDisable', 'reportDigital', '2', 'enable'],
+			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin setting %m.dsetting', 'setDigital', '2', 'off'],
+			['R', ext.name != null ? ext.name : ext.sip + ': %m.pin get', 'getDigital', '2'],
 			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin get mode', 'getPinMode', '2'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin %n %', 'setPwm', '2', 100],
+			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin %n pwm %', 'setPwm', '2', 100],
 			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin get pwm', 'getPwm', '2'],
 			['h', 'when pin %m.pin is %m.dsetting', 'when_alarm'],
 		],
@@ -2875,7 +2874,6 @@ function decodeCustomFloat(input) {
   	ext.setPwm = function(pin, value) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.PWM) {
   			if(value <= 100) {
-  				console.log("set pwm " + value);
 				ext.board.pwmWrite(pin, value * 10.23);
 			}
 	    }
