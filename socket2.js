@@ -5433,8 +5433,6 @@ function decodeCustomFloat(input) {
 		var retval = false;
 		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
 			retval = ext.board.pins[pin].value == setting == "on" ? 1 : 0;
-			console.log(pin);
-			console.log(setting);
 		}
 		return retval;
 	}
