@@ -987,7 +987,8 @@ Board.prototype.emit = function(name, evt) {
  *                       wrapped in a Buffer and written to the transport.
  */
 function writeToTransport(board, data) {
-  board.transport.send(new Uint8Array(data));
+	var d = new Uint8Array(data);
+  board.transport.send(d);
   console.log("sent");
 }
 
