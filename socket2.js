@@ -2777,7 +2777,7 @@ function decodeCustomFloat(input) {
 	ext.when_alarm = function(pin, setting) {
 		var retval = false;
 		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
-			retval = ext.board.pins[pin].value == setting == "on" ? 1 : 0;
+			retval = ext.board.pins[pin].value == (setting == "on" ? 1 : 0);
 		}
 		return retval;
 	}
