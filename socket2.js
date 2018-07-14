@@ -2751,7 +2751,7 @@ function decodeCustomFloat(input) {
   
 	var descriptor = {
 		blocks: [
-			[' ', ext.name != null ? ext.name : ext.ip + ': connect', 'connect'],
+			[' ', ext.name != null ? ext.name : ext.ip.split(".")[3] + ': connect', 'connect'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': disconnect', 'disconnect'],
 			['b', ext.name != null ? ext.name : ext.ip + ': isConnected', 'isConnected'],
 			[' ', ext.name != null ? ext.name : ext.ip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
