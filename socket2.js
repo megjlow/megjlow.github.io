@@ -2762,7 +2762,7 @@ function decodeCustomFloat(input) {
 			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin get mode', 'getPinMode', '2'],
 			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin %n pwm %', 'setPwm', '2', 100],
 			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin get pwm', 'getPwm', '2'],
-			['h', ext.name != null ? ext.name : ext.sip + 'when pin %m.pin is %m.dsetting', 'when_alarm'],
+			['h', ext.name != null ? ext.name : ext.sip + ': when pin %m.pin is %m.dsetting', 'when_alarm'],
 		],
 		'menus': {
 			'pin': ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
