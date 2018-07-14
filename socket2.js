@@ -1062,6 +1062,7 @@ Board.prototype.pwmWrite = function(pin, value) {
     data.push(ANALOG_MESSAGE | pin, value & 0x7F, (value >> 7) & 0x7F);
   }
 
+	console.log("pwmWrite pin: " + pin + " value: " + value);
   writeToTransport(this, data);
 };
 
