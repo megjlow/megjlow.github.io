@@ -2855,10 +2855,6 @@ function decodeCustomFloat(input) {
 	    }
 	}
 	
-	ext.getDigitalCallback = function(e) {
-		console.log("getDigitalCallback" + e);
-	}
-	
 	ext.getDigital = function(pin, callback) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
   			ext.board.digitalRead(pin, callback);
