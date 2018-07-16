@@ -2752,17 +2752,17 @@ function decodeCustomFloat(input) {
   
 	var descriptor = {
 		blocks: [
+			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin set %m.dsetting', 'setDigital', '2', 'off'],
+			['R', ext.name != null ? ext.name : ext.sip + ': %m.pin get', 'getDigital', '2'],
+			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin %n pwm %', 'setPwm', '2', 100],
+			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin get pwm', 'getPwm', '2'],
+			[' ', ext.name != null ? ext.name : ext.sip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
+			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin getPinmode', 'getPinMode', '2'],
+			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin reporting %m.enableDisable', 'reportDigital', '2', 'enable'],
+			['h', ext.name != null ? ext.name : ext.sip + ': when pin %m.pin is %m.dsetting', 'when_alarm'],
 			[' ', ext.name != null ? ext.name : ext.sip + ': connect', 'connect'],
 			[' ', ext.name != null ? ext.name : ext.sip + ': disconnect', 'disconnect'],
 			['b', ext.name != null ? ext.name : ext.sip + ': isConnected', 'isConnected'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin reporting %m.enableDisable', 'reportDigital', '2', 'enable'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin setting %m.dsetting', 'setDigital', '2', 'off'],
-			['R', ext.name != null ? ext.name : ext.sip + ': %m.pin get', 'getDigital', '2'],
-			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin get mode', 'getPinMode', '2'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin %n pwm %', 'setPwm', '2', 100],
-			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin get pwm', 'getPwm', '2'],
-			['h', ext.name != null ? ext.name : ext.sip + ': when pin %m.pin is %m.dsetting', 'when_alarm'],
 		],
 		'menus': {
 			'pin': ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
