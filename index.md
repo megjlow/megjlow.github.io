@@ -1,6 +1,6 @@
 ### Welcome to GitHub Pages for Tiles for Tales.
 
-Information about the Tiles for Tales project is available here:  [http://www.warwick.ac.uk/TilesForTales]
+Information about the Tiles for Tales project is available here:  <http://www.warwick.ac.uk/TilesForTales>
 
 The project uses NodeMCU boards using the capabilities of the ESP8266.  Each tile has is controlled by a board, running the Tilenet software.  
 
@@ -19,3 +19,4 @@ Httpd library https://megjlow.github.io/httpd/
 ### Authors
 Margaret J. Low (m.j.low AT warwick.ac.uk) and James A. Johnston
 
+<<
