@@ -7,6 +7,7 @@ The project uses NodeMCU boards using the capabilities of the ESP8266.  Each til
 ### Key Files in this github respository
 
 extensionloader.js  Script to load extension block into ScratchX
+
 socket.js Script that loads in Scratch commands to control a tile
 
 ### Create a Tile
