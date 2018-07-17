@@ -7,7 +7,7 @@ The project uses NodeMCU boards using the capabilities of the ESP8266.  Each til
 ### Create a Tile
 The original project used cardboard and felt to create individual tiles, but a mixture of materials can be used.  More information can be found at http://www.warwick.ac.uk/TilesForTales/CreateATile
 
-### Using ScratchX with Adafruit Feather Huzzah
+### Using ScratchX with NodeMCU board
 To use the ScratchX extension to communicate with the board, the steps are here: http://www.warwick.ac.uk/TilesForTales/UsingScratchX 
 
 ### Hardware and Software
