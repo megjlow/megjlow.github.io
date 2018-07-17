@@ -5,6 +5,7 @@ Information about the Tiles for Tales project is available here:  [http://www.wa
 The project uses NodeMCU boards using the capabilities of the ESP8266.  Each tile has is controlled by a board, running the Tilenet software.  
 
 ### Key Files in this github respository
+
 extensionloader.js  Script to load extension block into ScratchX
 socket.js Script that loads in Scratch commands to control a tile
 
