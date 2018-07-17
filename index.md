@@ -14,7 +14,8 @@ To use the ScratchX extension to communicate with the board, the steps are here:
 An overview of the hardware and software involved in the project is available here:  [http://www.warwick.ac.uk/TilesForTales/HardwareAndSoftware](http://www.warwick.ac.uk/TilesForTales/HardwareAndSoftware)
 
 ### Key Components
-Httpd library [https://megjlow.github.io/httpd](https://megjlow.github.io/httpd)
+Tiles library [http://megjlow.github.io/tiles](http://megjlow.github.io/tiles)
+Httpd library [http://megjlow.github.io/httpd](http://megjlow.github.io/httpd)
 
 ### Authors
 Margaret J. Low (m.j.low AT warwick.ac.uk) and James A. Johnston
