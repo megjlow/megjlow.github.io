@@ -2,13 +2,14 @@
 
 Information about the Tiles for Tales project is available here:  [http://www.warwick.ac.uk/TilesForTales](http://www.warwick.ac.uk/TilesForTales).  The project uses NodeMCU boards using the capabilities of the ESP8266.  Each tile has is controlled by a board, running the Tilenet software.  
 
-### Key Files in this github respository
+### Key Files in this github respository (megjlow.github.io)
 
 * extensionloader.js  Script to load extension block into ScratchX.
 * socket.js Script that loads in Scratch commands to control a tile
 
 ### Key Components
 
+* Key files [http://megjlow.github.io](http://megjlow.github.io)
 * Tiles software [http://megjlow.github.io/tiles](http://megjlow.github.io/tiles)  
 * Httpd library [http://megjlow.github.io/httpd](http://megjlow.github.io/httpd)
 
