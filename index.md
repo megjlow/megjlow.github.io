@@ -2,7 +2,7 @@
 
 Information about the Tiles for Tales project is available here:  http://www.warwick.ac.uk/TilesForTales
 
-The project uses Adafruit Feather Huzzah boards using the capabilities of the ESP8266.  Each tile has is controlled by a board, running the Tilenet software.  
+The project uses NodeMCU boards using the capabilities of the ESP8266.  Each tile has is controlled by a board, running the Tilenet software.  
 
 ### Create a Tile
 The original project used cardboard and felt to create individual tiles, but a mixture of materials can be used.  More information can be found at http://www.warwick.ac.uk/TilesForTales/CreateATile
