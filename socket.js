@@ -2722,6 +2722,7 @@ function decodeCustomFloat(input) {
 			url: "https://www.doesntexist.exists",
 			async: false,
 			type: "GET",
+			dataType: "jsonp2,
 			success: function(response) {
 				// we'll never get here 
 			},
