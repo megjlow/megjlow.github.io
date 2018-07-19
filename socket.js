@@ -2724,7 +2724,7 @@ function decodeCustomFloat(input) {
 			type: "GET",
 			success: function(response) {
 				// we'll never get here 
-			}
+			},
 		    timeout: 10
 		});
 	}
