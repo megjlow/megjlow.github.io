@@ -639,13 +639,11 @@ function Board(port, options, callback) {
   });
   /*
   this.transport.on("close", function(event) {
-
     // https://github.com/node-serialport/node-serialport/blob/5.0.0/UPGRADE_GUIDE.md#opening-and-closing
     if (event && event.disconnect && event.disconnected) {
       this.emit("disconnect");
       return;
     }
-
     this.emit("close");
   }.bind(this));
 	*/
@@ -793,7 +791,6 @@ function Board(port, options, callback) {
   /*
   this.transport.on("data", function(data) {
     var byte, currByte, response, first, last, handler;
-
     for (var i = 0; i < data.length; i++) {
       byte = data[i];
       // we dont want to push 0 as the first byte on our buffer
@@ -801,22 +798,17 @@ function Board(port, options, callback) {
         continue;
       } else {
         this.currentBuffer.push(byte);
-
         first = this.currentBuffer[0];
         last = this.currentBuffer[this.currentBuffer.length - 1];
-
         // [START_SYSEX, ... END_SYSEX]
         if (first === START_SYSEX && last === END_SYSEX) {
-
           handler = SYSEX_RESPONSE[this.currentBuffer[1]];
-
           // Ensure a valid SYSEX_RESPONSE handler exists
           // Only process these AFTER the REPORT_VERSION
           // message has been received and processed.
           if (handler && this.versionReceived) {
             handler(this);
           }
-
           // It is possible for the board to have
           // existing activity from a previous run
           // that will leave any of the following
@@ -838,7 +830,6 @@ function Board(port, options, callback) {
           // until _after_ REPORT_VERSION, discard it.
           //
           this.currentBuffer.length = 0;
-
         } else if (first === START_SYSEX && (this.currentBuffer.length > 0)) {
           // we have a new command after an incomplete sysex command
           currByte = data[i];
@@ -853,7 +844,6 @@ function Board(port, options, callback) {
             // must be a valid response if not START_SYSEX
             // Identify response on first byte
             response = first < START_SYSEX ? (first & START_SYSEX) : first;
-
             // Check if the first byte is possibly
             // a valid MIDI_RESPONSE (handler)
             
@@ -866,13 +856,11 @@ function Board(port, options, callback) {
             }
           }
         }
-
         // There are 3 bytes in the buffer and the first is not START_SYSEX:
         // Might have a MIDI Command
         if (this.currentBuffer.length === 3 && first !== START_SYSEX) {
           // response bytes under 0xF0 we have a multi byte operation
           response = first < START_SYSEX ? (first & START_SYSEX) : first;
-
           
           if (MIDI_RESPONSE[response]) {
             // It's ok that this.versionReceived will be set to
@@ -2737,7 +2725,7 @@ function decodeCustomFloat(input) {
 			success: function(response) {
 				// we'll never get here 
 			}
-		      	timeout: 10
+		    timeout: 10
 		});
 	}
 	
