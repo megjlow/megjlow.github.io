@@ -2733,7 +2733,7 @@ function decodeCustomFloat(input) {
 		$.ajax({
 			url: "https://www.doesntexist.exists",
 			async: false,
-			type: "GET"
+			type: "GET",
 			success: function(response) {
 				// we'll never get here 
 			}
