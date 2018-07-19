@@ -2811,8 +2811,8 @@ function decodeCustomFloat(input) {
 		var retval = {status: 1, msg: 'Not Connected'};
 		if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
 			retval = {status: 2, msg: 'Device connected'};
+			ext.doDelay();
 		}
-		ext.doDelay();
 		return retval;
 	}
 	
