@@ -2765,7 +2765,7 @@ function decodeCustomFloat(input) {
 			['b', ext.name != null ? ext.name : ext.sip + ': isConnected', 'isConnected'],
 		],
 		'menus': {
-			'pin': ['0', '1', '2', '3', '4', '5', '12', '13', '14', '15', '16'],
+			'pin': ['0', '1', '2', '3', '4', '5', '12', '13', '14'],
 			'dsetting': ['on', 'off'],
 			'ppin': ['1', '2'],
 			'ioMode': ['output', 'input', 'pwm'],
