@@ -2816,6 +2816,11 @@ function decodeCustomFloat(input) {
 				bMode = ext.board.MODES.PWM;
 			}
 			ext.board.pinMode(pin, bMode);
+			window.setTimeout(function() {
+				callback();
+			}, 100);
+		}
+		else {
 			callback();
 		}
 	}
@@ -2854,18 +2859,30 @@ function decodeCustomFloat(input) {
   		}
   	}
   	
-  	ext.reportDigital = function(pin, setting) {
+  	ext.reportDigital = function(pin, setting, callback) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
   			ext.board.reportDigitalPin(pin, setting == 'enable' ? 1 : 0);
+			window.setTimeout(function() {
+				callback();
+			}, 200);
   		}
+		else {
+			callback();
+		}
   	}
   	
-  	ext.setPwm = function(pin, value) {
+  	ext.setPwm = function(pin, value, callback) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.PWM) {
   			if(value <= 100) {
 				ext.board.pwmWrite(pin, value * 10.23);
 			}
+			window.setTimeout(function() {
+				callback();
+			}, 100);
 	    }
+		else {
+			callback();
+		}
   	}
   	
   	ext.getPwm = function(pin) {
