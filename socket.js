@@ -2716,20 +2716,6 @@ function decodeCustomFloat(input) {
 	
 	//end firmata.js
 	
-	
-	ext.doDelay = function() {
-		$.ajax({
-			url: "https://www.doesntexist.exists",
-			async: false,
-			type: "GET",
-			dataType: "jsonp",
-			success: function(response) {
-				// we'll never get here 
-			},
-		    timeout: 10
-		});
-	}
-	
 	// websocket event handlers
 	
 	ext.doSend = function(message) {
@@ -2792,7 +2778,6 @@ function decodeCustomFloat(input) {
 			ext.socket = null;
 			ext.connect();
 		}
-		ext.doDelay();
 		// if socket is in open or connecting state we're not going to do anything
 	}
 	
@@ -2800,7 +2785,6 @@ function decodeCustomFloat(input) {
 		var retval = {status: 1, msg: 'Not Connected'};
 		if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
 			retval = {status: 2, msg: 'Device connected'};
-			ext.doDelay();
 		}
 		return retval;
 	}
@@ -2830,7 +2814,6 @@ function decodeCustomFloat(input) {
 				bMode = ext.board.MODES.PWM;
 			}
 			ext.board.pinMode(pin, bMode);
-			ext.doDelay();
 		}
 	}
 	
@@ -2849,6 +2832,8 @@ function decodeCustomFloat(input) {
 			//else if(ext.board.pins[pin].mode == ext.board.MODES.ANALOG) {
 			//	retval = "analog";
 			//}
+			console.log("getPinMode");
+			console.log("getPinMode");
 			return retval;
 		}
 	}
@@ -2856,21 +2841,24 @@ function decodeCustomFloat(input) {
 	ext.setDigital = function(pin, value) {
 		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
 			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
-			ext.doDelay();
+			console.log("setPinValue");
+			console.log("setPinValue");
 	    }
 	}
 	
 	ext.getDigital = function(pin, callback) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
   			ext.board.digitalRead(pin, callback);
-			ext.doDelay();
+			console.log("digitalRead");
+			console.log("digitalRead");
   		}
   	}
   	
   	ext.reportDigital = function(pin, setting) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
   			ext.board.reportDigitalPin(pin, setting == 'enable' ? 1 : 0);
-			ext.doDelay();
+			console.log("reportDigital");
+			console.log("reportDigital");
   		}
   	}
   	
@@ -2879,7 +2867,8 @@ function decodeCustomFloat(input) {
   			if(value <= 100) {
 				ext.board.pwmWrite(pin, value * 10.23);
 			}
-			ext.doDelay();
+			console.log("ext.setPwm");
+			console.log("ext.setPwm");
 	    }
   	}
   	
