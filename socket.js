@@ -2813,7 +2813,15 @@ function decodeCustomFloat(input) {
 			else if("pwm" == mode) {
 				bMode = ext.board.MODES.PWM;
 			}
+			console.log("");
+			console.log("");
+			console.log("");
+			console.log("");
 			ext.board.pinMode(pin, bMode);
+			console.log("");
+			console.log("");
+			console.log("");
+			console.log("");
 		}
 	}
 	
@@ -2834,6 +2842,10 @@ function decodeCustomFloat(input) {
 			//}
 			console.log("getPinMode");
 			console.log("getPinMode");
+			console.log("");
+			console.log("");
+			console.log("");
+			console.log("");
 			return retval;
 		}
 	}
@@ -2843,6 +2855,10 @@ function decodeCustomFloat(input) {
 			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
 			console.log("setPinValue");
 			console.log("setPinValue");
+			console.log("");
+			console.log("");
+			console.log("");
+			console.log("");
 	    }
 	}
 	
@@ -2851,6 +2867,10 @@ function decodeCustomFloat(input) {
   			ext.board.digitalRead(pin, callback);
 			console.log("digitalRead");
 			console.log("digitalRead");
+			console.log("");
+			console.log("");
+			console.log("");
+			console.log("");
   		}
   	}
   	
@@ -2859,6 +2879,10 @@ function decodeCustomFloat(input) {
   			ext.board.reportDigitalPin(pin, setting == 'enable' ? 1 : 0);
 			console.log("reportDigital");
 			console.log("reportDigital");
+			console.log("");
+			console.log("");
+			console.log("");
+			console.log("");
   		}
   	}
   	
@@ -2869,6 +2893,10 @@ function decodeCustomFloat(input) {
 			}
 			console.log("ext.setPwm");
 			console.log("ext.setPwm");
+			console.log("");
+			console.log("");
+			console.log("");
+			console.log("");
 	    }
   	}
   	
