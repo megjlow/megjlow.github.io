@@ -2737,15 +2737,16 @@ function decodeCustomFloat(input) {
 	
 	ext.sip = ext.ip.split(".")[3];
   
+	// setDigital, setPwm, setPinMode, reportDigital, connect, disconnect
 	var descriptor = {
 		blocks: [
-			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin set %m.dsetting', 'setDigital', '2', 'off'],
+			['w', ext.name != null ? ext.name : ext.sip + ': %m.pin set %m.dsetting', 'setDigital', '2', 'off'],
 			['R', ext.name != null ? ext.name : ext.sip + ': %m.pin get', 'getDigital', '2'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin %n pwm %', 'setPwm', '2', 100],
+			['w', ext.name != null ? ext.name : ext.sip + ': %m.pin %n pwm %', 'setPwm', '2', 100],
 			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin get pwm', 'getPwm', '2'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
+			['w', ext.name != null ? ext.name : ext.sip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
 			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin getPinmode', 'getPinMode', '2'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': %m.pin reporting %m.enableDisable', 'reportDigital', '2', 'enable'],
+			['w', ext.name != null ? ext.name : ext.sip + ': %m.pin reporting %m.enableDisable', 'reportDigital', '2', 'enable'],
 			['h', ext.name != null ? ext.name : ext.sip + ': when pin %m.pin is %m.dsetting', 'when_alarm'],
 			[' ', ext.name != null ? ext.name : ext.sip + ': connect', 'connect'],
 			[' ', ext.name != null ? ext.name : ext.sip + ': disconnect', 'disconnect'],
