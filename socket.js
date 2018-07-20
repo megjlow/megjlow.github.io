@@ -2806,7 +2806,7 @@ function decodeCustomFloat(input) {
 		}
 	}
 	
-	ext.setPinMode = function(pin, mode) {
+	ext.setPinMode = function(callback, pin, mode) {
 		if(ext.isConnected()) {
 			var bMode = ext.board.MODES.INPUT; 
 			if("output" == mode) {
@@ -2816,6 +2816,7 @@ function decodeCustomFloat(input) {
 				bMode = ext.board.MODES.PWM;
 			}
 			ext.board.pinMode(pin, bMode);
+			callback();
 		}
 	}
 	
