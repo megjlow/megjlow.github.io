@@ -2849,7 +2849,7 @@ function decodeCustomFloat(input) {
 			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
 			window.setTimeout(function() {
 				callback();
-			}, 200);
+			}, 100);
 	    }
 	}
 	
@@ -2864,7 +2864,7 @@ function decodeCustomFloat(input) {
   			ext.board.reportDigitalPin(pin, setting == 'enable' ? 1 : 0);
 			window.setTimeout(function() {
 				callback();
-			}, 200);
+			}, 100);
   		}
 		else {
 			callback();
