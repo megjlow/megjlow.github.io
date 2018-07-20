@@ -2717,6 +2717,7 @@ function decodeCustomFloat(input) {
 	//end firmata.js
 	
 	// websocket event handlers
+	ext._shutdown = function() {};
 	
 	ext.doSend = function(message) {
 		console.log("SENT: " + message);
