@@ -2818,7 +2818,7 @@ function decodeCustomFloat(input) {
 			ext.board.pinMode(pin, bMode);
 			window.setTimeout(function() {
 				callback();
-			}, 100);
+			}, 50);
 		}
 		else {
 			callback();
@@ -2849,7 +2849,7 @@ function decodeCustomFloat(input) {
 			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
 			window.setTimeout(function() {
 				callback();
-			}, 100);
+			}, 50);
 	    }
 	}
 	
@@ -2864,7 +2864,7 @@ function decodeCustomFloat(input) {
   			ext.board.reportDigitalPin(pin, setting == 'enable' ? 1 : 0);
 			window.setTimeout(function() {
 				callback();
-			}, 100);
+			}, 50);
   		}
 		else {
 			callback();
@@ -2878,7 +2878,7 @@ function decodeCustomFloat(input) {
 			}
 			window.setTimeout(function() {
 				callback();
-			}, 100);
+			}, 50);
 	    }
 		else {
 			callback();
