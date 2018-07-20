@@ -2837,9 +2837,12 @@ function decodeCustomFloat(input) {
 		}
 	}
 	
-	ext.setDigital = function(pin, value) {
+	ext.setDigital = function(callback, pin, value) {
 		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
 			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
+			window.setTimeout(function() {
+				callback();
+			}, 200);
 	    }
 	}
 	
