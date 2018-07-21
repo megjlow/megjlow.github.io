@@ -2726,7 +2726,6 @@ function decodeCustomFloat(input) {
   
 	ext.onOpen = function(evt) {
 		console.log("Connected");
-		ext.board = new Board(ext.socket);
 	}
   
 	ext.onClose = function(evt) {
@@ -2774,6 +2773,7 @@ function decodeCustomFloat(input) {
 		if(ext.socket == null) {
 			ext.socket = new WebSocket("ws://" + ext.ip, "firmata");
 			ext.socket.binaryType = 'arraybuffer';
+			ext.board = new Board(ext.socket);
 		}
 		else if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
 			ext.socket = null;
