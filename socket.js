@@ -2736,7 +2736,9 @@ function decodeCustomFloat(input) {
 	
 	// end websocket event handlers
 	
-	ext.sip = ext.ip.split(".")[3];
+	if(ext.ip != undefined) {
+		ext.sip = ext.ip.split(".")[3];
+	}
   
 	// setDigital, setPwm, setPinMode, reportDigital, connect, disconnect
 	var descriptor = {
