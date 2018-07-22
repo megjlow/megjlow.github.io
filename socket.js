@@ -2743,17 +2743,17 @@ function decodeCustomFloat(input) {
 	// setDigital, setPwm, setPinMode, reportDigital, connect, disconnect
 	var descriptor = {
 		blocks: [
-			['w', ext.name != null ? ext.name : ext.sip + ': %m.pin set %m.dsetting', 'setDigital', '2', 'off'],
-			['R', ext.name != null ? ext.name : ext.sip + ': %m.pin get', 'getDigital', '2'],
-			['w', ext.name != null ? ext.name : ext.sip + ': %m.pin %n pwm %', 'setPwm', '2', 100],
-			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin get pwm', 'getPwm', '2'],
-			['w', ext.name != null ? ext.name : ext.sip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
-			['r', ext.name != null ? ext.name : ext.sip + ': %m.pin getPinmode', 'getPinMode', '2'],
-			['w', ext.name != null ? ext.name : ext.sip + ': %m.pin reporting %m.enableDisable', 'reportDigital', '2', 'enable'],
-			['h', ext.name != null ? ext.name : ext.sip + ': when pin %m.pin is %m.dsetting', 'when_alarm'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': connect', 'connect'],
-			[' ', ext.name != null ? ext.name : ext.sip + ': disconnect', 'disconnect'],
-			['b', ext.name != null ? ext.name : ext.sip + ': isConnected', 'isConnected'],
+			['w', ext.name != null ? ext.name + ': %m.pin set %m.dsetting' : ext.sip + ': %m.pin set %m.dsetting', 'setDigital', '2', 'off'],
+			['R', ext.name != null ? ext.name + ': %m.pin get' : ext.sip + ': %m.pin get', 'getDigital', '2'],
+			['w', ext.name != null ? ext.name + ': %m.pin %n pwm %' : ext.sip + ': %m.pin %n pwm %', 'setPwm', '2', 100],
+			['r', ext.name != null ? ext.name + ': %m.pin get pwm' : ext.sip + ': %m.pin get pwm', 'getPwm', '2'],
+			['w', ext.name != null ? ext.name +': setPinMode %m.pin %m.ioMode' : ext.sip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
+			['r', ext.name != null ? ext.name + ': %m.pin getPinmode' : ext.sip + ': %m.pin getPinmode', 'getPinMode', '2'],
+			['w', ext.name != null ? ext.name + ': %m.pin reporting %m.enableDisable' : ext.sip + ': %m.pin reporting %m.enableDisable', 'reportDigital', '2', 'enable'],
+			['h', ext.name != null ? ext.name + ': when pin %m.pin is %m.dsetting' : ext.sip + ': when pin %m.pin is %m.dsetting', 'when_alarm'],
+			[' ', ext.name != null ? ext.name + ': connect' : ext.sip + ': connect', 'connect'],
+			[' ', ext.name != null ? ext.name + ': disconnect' : ext.sip + ': disconnect', 'disconnect'],
+			['b', ext.name != null ? ext.name + ': isConnected' : ext.sip + ': isConnected', 'isConnected'],
 		],
 		'menus': {
 			'pin': ['0', '1', '2', '3', '4', '5', '12', '13', '14'],
