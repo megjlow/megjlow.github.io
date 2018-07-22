@@ -2,6 +2,7 @@ new (function() {
 	var ext = this;
 	ext.socket = null;
 	ext.board = null;
+	ext.counter = 0;
   
   var getUrlParameter = function getUrlParameter(sParam) {
 	    var sPageURL = decodeURIComponent(document.currentScript.src.split("?")[1]),
@@ -2850,6 +2851,8 @@ function decodeCustomFloat(input) {
 	ext.setDigital = function(pin, value, callback) {
 		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
 			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
+			ext.counter++;
+			console.log("counter " + ext.counter);
 			window.setTimeout(function() {
 				callback();
 			}, 100);
