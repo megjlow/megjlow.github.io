@@ -2822,7 +2822,7 @@ function decodeCustomFloat(input) {
 			ext.board.pinMode(pin, bMode);
 			window.setTimeout(function() {
 				callback();
-			}, 100);
+			}, 200);
 		}
 		else {
 			callback();
