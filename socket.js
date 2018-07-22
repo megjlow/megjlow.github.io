@@ -977,6 +977,7 @@ Board.prototype.emit = function(name, evt) {
  */
 function writeToTransport(board, data) {
 	var d = new Uint8Array(data);
+	console.log("writeToTransport");
 	board.transport.send(d);
 }
 
