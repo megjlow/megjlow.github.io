@@ -2731,6 +2731,7 @@ function decodeCustomFloat(input) {
 	ext.onClose = function(evt) {
 		console.log("onClose");
 		ext.socket = null;
+		ext.board = null;
 	}
 	
 	// end websocket event handlers
@@ -2770,7 +2771,7 @@ function decodeCustomFloat(input) {
 	}
 	
 	ext.connect = function() {
-		if(ext.socket == null) {
+		if(ext.socket == null && ext.board == null) {
 			ext.socket = new WebSocket("ws://" + ext.ip, "firmata");
 			ext.socket.binaryType = 'arraybuffer';
 			ext.board = new Board(ext.socket);
@@ -2784,7 +2785,7 @@ function decodeCustomFloat(input) {
 	
 	ext._getStatus = function() {
 		var retval = {status: 1, msg: 'Not Connected'};
-		if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
+		if(ext.isConnected()) {
 			retval = {status: 2, msg: 'Device connected'};
 		}
 		return retval;
@@ -2792,15 +2793,16 @@ function decodeCustomFloat(input) {
 	
 	ext.isConnected = function() {
 		var retval = false;
-		if(ext.socket != null && ext.socket.readyState == ext.socket.OPEN) {
+		if(ext.socket != null && ext.board != null && ext.socket.readyState == ext.socket.OPEN) {
 			retval = true;
 		}
 		return retval;
 	}
   
 	ext.disconnect = function() {
-		if(ext.socket != null) {
+		if(ext.isConnected()) {
 			ext.socket.close();
+			ext.board = null;
 			ext.socket = null;
 		}
 	}
@@ -2885,7 +2887,7 @@ function decodeCustomFloat(input) {
   	}
   	
   	ext.getPwm = function(pin) {
-  		if(ext.isConnected && ext.board.pins[pin].mode == ext.board.MODES.PWM) {
+  		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.PWM) {
   			return ext.board.pins[pin].value;
   		}
   	}
