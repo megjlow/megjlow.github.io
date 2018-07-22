@@ -2850,12 +2850,9 @@ function decodeCustomFloat(input) {
 	ext.setDigital = function(pin, value, callback) {
 		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
 			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
-			callback();
-			/*
 			window.setTimeout(function() {
 				callback();
 			}, 100);
-			*/
 	    }
 	}
 	
