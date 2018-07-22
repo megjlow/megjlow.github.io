@@ -2744,7 +2744,7 @@ function decodeCustomFloat(input) {
 	// setDigital, setPwm, setPinMode, reportDigital, connect, disconnect
 	var descriptor = {
 		blocks: [
-			['w', ext.name != null ? ext.name + ': %m.pin set %m.dsetting' : ext.sip + ': %m.pin set %m.dsetting', 'setDigital', '2', 'off'],
+			[' ', ext.name != null ? ext.name + ': %m.pin set %m.dsetting' : ext.sip + ': %m.pin set %m.dsetting', 'setDigital', '2', 'off'],
 			['R', ext.name != null ? ext.name + ': %m.pin get' : ext.sip + ': %m.pin get', 'getDigital', '2'],
 			['w', ext.name != null ? ext.name + ': %m.pin %n pwm %' : ext.sip + ': %m.pin %n pwm %', 'setPwm', '2', 100],
 			['r', ext.name != null ? ext.name + ': %m.pin get pwm' : ext.sip + ': %m.pin get pwm', 'getPwm', '2'],
@@ -2852,10 +2852,6 @@ function decodeCustomFloat(input) {
 	ext.setDigital = function(pin, value, callback) {
 		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
 			console.log("setDigital " + pin + " " + value);
-			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
-			window.setTimeout(function() {
-				callback();
-			}, 100);
 	    }
 	}
 	
