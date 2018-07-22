@@ -2812,6 +2812,7 @@ function decodeCustomFloat(input) {
 	
 	ext.setPinMode = function(pin, mode, callback) {
 		if(ext.isConnected()) {
+			console.log("setPinMode " + pin + " " + mode);
 			var bMode = ext.board.MODES.INPUT; 
 			if("output" == mode) {
 				bMode = ext.board.MODES.OUTPUT;
@@ -2850,6 +2851,7 @@ function decodeCustomFloat(input) {
 	
 	ext.setDigital = function(pin, value, callback) {
 		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
+			console.log("setDigital " + pin + " " + value);
 			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
 			window.setTimeout(function() {
 				callback();
