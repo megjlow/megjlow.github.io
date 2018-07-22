@@ -2820,8 +2820,8 @@ function decodeCustomFloat(input) {
 			else if("pwm" == mode) {
 				bMode = ext.board.MODES.PWM;
 			}
-			ext.board.pinMode(pin, bMode);
 			window.setTimeout(function() {
+				ext.board.pinMode(pin, bMode);
 				callback();
 			}, 100);
 		}
@@ -2855,7 +2855,7 @@ function decodeCustomFloat(input) {
 			window.setTimeout(function() {
 				ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
 				callback();
-			}, 250);
+			}, 100);
 	    }
 	}
 	
