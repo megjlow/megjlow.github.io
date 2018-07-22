@@ -2820,12 +2820,9 @@ function decodeCustomFloat(input) {
 				bMode = ext.board.MODES.PWM;
 			}
 			ext.board.pinMode(pin, bMode);
-			callback();
-			/*
 			window.setTimeout(function() {
 				callback();
 			}, 100);
-			*/
 		}
 		else {
 			callback();
@@ -2854,13 +2851,9 @@ function decodeCustomFloat(input) {
 	ext.setDigital = function(pin, value, callback) {
 		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
 			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
-			callback();
-			/*
-			console.log("counter " + ext.counter);
 			window.setTimeout(function() {
 				callback();
 			}, 100);
-			*/
 	    }
 	}
 	
@@ -2873,12 +2866,9 @@ function decodeCustomFloat(input) {
   	ext.reportDigital = function(pin, setting, callback) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
   			ext.board.reportDigitalPin(pin, setting == 'enable' ? 1 : 0);
-			callback();
-			/*
 			window.setTimeout(function() {
 				callback();
 			}, 100);
-			*/
   		}
 		else {
 			callback();
@@ -2890,12 +2880,9 @@ function decodeCustomFloat(input) {
   			if(value <= 100) {
 				ext.board.pwmWrite(pin, value * 10.23);
 			}
-			callback();
-			/*
 			window.setTimeout(function() {
 				callback();
 			}, 100);
-			*/
 	    }
 		else {
 			callback();
