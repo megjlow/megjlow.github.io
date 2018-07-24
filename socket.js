@@ -615,7 +615,7 @@ function Board(port, options, callback) {
   this.version = {};
   this.firmware = {};
   this.currentBuffer = [];
-  this.versionReceived = false;
+  this.versionReceived = true;
   this.name = "Firmata";
   this.settings = settings;
   this.pending = 0;
