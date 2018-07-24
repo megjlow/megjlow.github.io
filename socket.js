@@ -936,10 +936,13 @@ function Board(port, options, callback) {
         this.RESOLUTION.PWM = 0x0FF;
 
         ready();
-      } else {
+      }
+/*	  
+	  else {
         this.queryCapabilities(function() {
           this.queryAnalogMapping(ready);
         });
+	*/
       }
     //});
   };
