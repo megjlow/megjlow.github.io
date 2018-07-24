@@ -2810,7 +2810,7 @@ function decodeCustomFloat(input) {
 		}
 	}
 	
-	ext.setPinMode = function(pin, mode, callback) {
+	ext.setPinMode = function(pin, mode) {
 		if(ext.isConnected()) {
 			console.log("setPinMode " + pin + " " + mode);
 			var bMode = ext.board.MODES.INPUT; 
@@ -2820,13 +2820,7 @@ function decodeCustomFloat(input) {
 			else if("pwm" == mode) {
 				bMode = ext.board.MODES.PWM;
 			}
-			window.setTimeout(function() {
-				ext.board.pinMode(pin, bMode);
-				callback();
-			}, 100);
-		}
-		else {
-			callback();
+			ext.board.pinMode(pin, bMode);
 		}
 	}
 	
@@ -2849,46 +2843,28 @@ function decodeCustomFloat(input) {
 		}
 	}
 	
-	ext.setDigital = function(pin, value, callback) {
+	ext.setDigital = function(pin, value) {
 		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
-			console.log("setDigital " + pin + " " + value);
-			window.setTimeout(function() {
-				ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
-				callback();
-			}, 100);
+			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
 	    }
 	}
 	
-	ext.getDigital = function(pin, callback) {
+	ext.getDigital = function(pin) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
   			ext.board.digitalRead(pin, callback);
   		}
   	}
   	
-  	ext.reportDigital = function(pin, setting, callback) {
+  	ext.reportDigital = function(pin, setting) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
-			window.setTimeout(function() {
-				ext.board.reportDigitalPin(pin, setting == 'enable' ? 1 : 0);
-				callback();
-			}, 100);
+			ext.board.reportDigitalPin(pin, setting == 'enable' ? 1 : 0);
   		}
-		else {
-			callback();
-		}
   	}
   	
-  	ext.setPwm = function(pin, value, callback) {
+  	ext.setPwm = function(pin, value) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.PWM) {
-			window.setTimeout(function() {
-				if(value <= 100) {
-					ext.board.pwmWrite(pin, value * 10.23);
-				}
-				callback();
-			}, 100);
+			ext.board.pwmWrite(pin, value * 10.23);
 	    }
-		else {
-			callback();
-		}
   	}
   	
   	ext.getPwm = function(pin) {
