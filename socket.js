@@ -937,13 +937,13 @@ function Board(port, options, callback) {
 
         ready();
       }
-/*	  
+ /*
 	  else {
         this.queryCapabilities(function() {
           this.queryAnalogMapping(ready);
         });
-	*/
       }
+*/
     //});
   };
 
