@@ -908,7 +908,7 @@ function Board(port, options, callback) {
     clearTimeout(this.reportVersionTimeoutId);
     this.versionReceived = true;
     //this.one("queryfirmware", function() {
-
+/*
       // Only preemptively set the sampling interval if `samplingInterval`
       // property was _explicitly_ set as a constructor option.
       if (options.samplingInterval !== undefined) {
@@ -926,6 +926,7 @@ function Board(port, options, callback) {
             this.pins.push({supportedModes: [], analogChannel: analogChannel});
           }
         }
+*/
 
         // If the capabilities query is skipped,
         // default resolution values will be used.
