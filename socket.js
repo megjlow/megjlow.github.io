@@ -2750,15 +2750,15 @@ function decodeCustomFloat(input) {
 	// setDigital, setPwm, setPinMode, reportDigital, connect, disconnect
 	var descriptor = {
 		blocks: [
-			['w', ext.name != null ? ext.name + ': %m.pin set %m.dsetting' : ext.sip + ': %m.pin set %m.dsetting', 'setDigital', '2', 'off'],
+			[' ', ext.name != null ? ext.name + ': %m.pin set %m.dsetting' : ext.sip + ': %m.pin set %m.dsetting', 'setDigital', '2', 'off'],
 			['R', ext.name != null ? ext.name + ': %m.pin get' : ext.sip + ': %m.pin get', 'getDigital', '2'],
-			['w', ext.name != null ? ext.name + ': %m.pin %n pwm %' : ext.sip + ': %m.pin %n pwm %', 'setPwm', '2', 100],
+			[' ', ext.name != null ? ext.name + ': %m.pin %n pwm %' : ext.sip + ': %m.pin %n pwm %', 'setPwm', '2', 100],
 			['r', ext.name != null ? ext.name + ': %m.pin get pwm' : ext.sip + ': %m.pin get pwm', 'getPwm', '2'],
-			['w', ext.name != null ? ext.name +': setPinMode %m.pin %m.ioMode' : ext.sip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
+			[' ', ext.name != null ? ext.name +': setPinMode %m.pin %m.ioMode' : ext.sip + ': setPinMode %m.pin %m.ioMode', 'setPinMode', 2, 'output'],
 			['r', ext.name != null ? ext.name + ': %m.pin getPinmode' : ext.sip + ': %m.pin getPinmode', 'getPinMode', '2'],
-			['w', ext.name != null ? ext.name + ': %m.pin reporting %m.enableDisable' : ext.sip + ': %m.pin reporting %m.enableDisable', 'reportDigital', '2', 'enable'],
+			[' ', ext.name != null ? ext.name + ': %m.pin reporting %m.enableDisable' : ext.sip + ': %m.pin reporting %m.enableDisable', 'reportDigital', '2', 'enable'],
 			['h', ext.name != null ? ext.name + ': when pin %m.pin is %m.dsetting' : ext.sip + ': when pin %m.pin is %m.dsetting', 'when_alarm'],
-			[' ', ext.name != null ? ext.name + ': connect' : ext.sip + ': connect', 'connect'],
+			['w', ext.name != null ? ext.name + ': connect' : ext.sip + ': connect', 'connect'],
 			[' ', ext.name != null ? ext.name + ': disconnect' : ext.sip + ': disconnect', 'disconnect'],
 			['b', ext.name != null ? ext.name + ': isConnected' : ext.sip + ': isConnected', 'isConnected'],
 		],
@@ -2779,15 +2779,22 @@ function decodeCustomFloat(input) {
 		return retval;
 	}
 	
-	ext.connect = function() {
+	ext.connect = function(callback) {
 		if(ext.socket == null && ext.board == null) {
 			ext.socket = new WebSocket("ws://" + ext.ip, "firmata");
 			ext.socket.binaryType = 'arraybuffer';
 			ext.board = new Board(ext.socket);
+			window.setTimeout(function() {
+				callback();
+			},
+			100);
 		}
 		else if(ext.socket.readyState == ext.socket.CLOSING || ext.socket.readyState == ext.socket.CLOSED) {
 			ext.socket = null;
 			ext.connect();
+		}
+		else {
+			callback();
 		}
 		// if socket is in open or connecting state we're not going to do anything
 	}
@@ -2816,7 +2823,7 @@ function decodeCustomFloat(input) {
 		}
 	}
 	
-	ext.setPinMode = function(pin, mode, callback) {
+	ext.setPinMode = function(pin, mode) {
 		if(ext.isConnected()) {
 			console.log("setPinMode " + pin + " " + mode);
 			var bMode = ext.board.MODES.INPUT; 
@@ -2826,14 +2833,7 @@ function decodeCustomFloat(input) {
 			else if("pwm" == mode) {
 				bMode = ext.board.MODES.PWM;
 			}
-			window.setTimeout(function() {
-				ext.board.pinMode(pin, bMode);
-				callback();
-			},
-			50);
-		}
-		else {
-			callback();
+			ext.board.pinMode(pin, bMode);
 		}
 	}
 	
@@ -2856,17 +2856,10 @@ function decodeCustomFloat(input) {
 		}
 	}
 	
-	ext.setDigital = function(pin, value, callback) {
+	ext.setDigital = function(pin, value) {
 		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.OUTPUT) {
-			window.setTimeout(function() {
-				ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
-				callback();
-			},
-			50);
+			ext.board.setPinValue(pin, value == 'off' ? 0 : 1);
 	    }
-		else {
-			callback();
-		}
 	}
 	
 	ext.getDigital = function(pin) {
@@ -2877,27 +2870,14 @@ function decodeCustomFloat(input) {
   	
   	ext.reportDigital = function(pin, setting) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.INPUT) {
-			window.setTimeout(function() {
-				ext.board.reportDigitalPin(pin, setting == 'enable' ? 1 : 0);
-				callback();
-			},
-			50);			
+			ext.board.reportDigitalPin(pin, setting == 'enable' ? 1 : 0);			
   		}
-		else {
-			callback();
-		}
   	}
   	
   	ext.setPwm = function(pin, value, callback) {
   		if(ext.isConnected() && ext.board.pins[pin].mode == ext.board.MODES.PWM) {
-			window.setTimeout(function() {
-				ext.board.pwmWrite(pin, value * 10.23);
-			},
-			50);
+			ext.board.pwmWrite(pin, value * 10.23);
 	    }
-		else {
-			callback();
-		}
   	}
   	
   	ext.getPwm = function(pin) {
